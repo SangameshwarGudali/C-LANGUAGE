@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* argv[last_element] = NULL;*/
+// argv last index is always set to NULL 
+
 int main(int argc, char* argv[])
 {
     int i;
