@@ -1,0 +1,54 @@
+dest = src; 
+
+m = n;
+m (IS ASSIGNED TO) n 
+DEST                SRC 
+
+CONCEPTUAL 
+R1 <- n 
+m <- R1 
+
+
+
+############################
+movl %r1, n 
+movl m, %r1 
+
+###############################
+
+Chairman / VC 
+Sales 15% increment  -> C programming 
+
+    Sales Manager -> Compiler 
+        Sales     -> Machine / Microprocessor   
+
+DEED OF ASSIGNMENT 
+
+int main() 
+{
+    n = 10; 
+
+}
+
+ASSIGNMENT STATEMENT -> COMPUTE STATEMENT 
+LHS = RHS; 
+
+variable = constant; 
+variable = variable; 
+
+int m; 
+
+m = 10;     // ok 
+
+int n; 
+
+n = m;  // ok 
+
+m = n; 
+
+m = 10; 
+
+m = n; 
+n = m; 
+
+

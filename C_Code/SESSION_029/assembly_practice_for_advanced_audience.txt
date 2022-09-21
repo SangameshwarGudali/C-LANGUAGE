@@ -1,0 +1,28 @@
+# Practice 1 
+
+.section .data 
+    n1:
+    .int    0
+
+    n2: 
+    .int    0 
+
+.section .text 
+main: 
+    movl    n1, $10 
+    movl    %r0, n1 
+    movl    n2, %r0 
+
+# Practice 2 
+.section .data 
+    u: 
+    .int    0 
+
+    v: 
+    .int    0 
+    
+.section .text 
+main: 
+    movl    u, $10 
+    movl    %r4, u 
+    movl    v, %r4 

@@ -1,0 +1,90 @@
+Problem 1: 
+    Take two integers. 
+    Store 100 in first integer. 
+    Transfer data in one integer to second. 
+#-------------------------------------------------
+
+int number_one; // M[1000:1003]
+int number_two; // M[1004:1007]
+
+int main(void)
+{
+    number_one = 100; 
+    number_two = number_one; 
+}
+
+#----------------------------------------------------
+
+int vicky_kaushal;  // M[2000:2003]
+int katrina_kaif;   // M[]
+
+int main(void)
+{
+    vicky_kaushal = 100; 
+    katrina_kaif = vicky_kaushal; 
+}
+
+#---------------------------------------------------------
+
+int jilabi; 
+int angur_malai; 
+
+int main(void)
+{
+    jilabi = 100; 
+    angur_malai = jilabi; 
+}
+
+#----------------------------------------------------
+
+int number_one; 
+int number_two; 
+
+int main()
+{
+    number_one = 100; 
+    number_two = 200; 
+}
+
+#---------------------------------------------------
+Practice 1: 
+number_one -> m 
+number_two -> n 
+
+int m; 
+int n; 
+
+int main(void)
+{
+    m = 100; 
+    n = m; 
+}
+
+#------------------------------------------------------
+Practice 
+number_one-> u // notebook 
+number_two-> v // notebook 
+////////////////////////////////////////////////////////
+int u; 
+int v; 
+
+int main(void)
+{
+    u = 100; 
+    v = u; 
+}
+////////////////////////////////////////////////////////
+Practice 3: 
+Notebook: 
+number_one -> n1 
+number_two -> n2
+////////////////////////////////////////////////////////
+int n1; 
+int n2; 
+
+int main(void)
+{
+    n1 = 100; 
+    n2 = n1; 
+}
+////////////////////////////////////////////////////////
