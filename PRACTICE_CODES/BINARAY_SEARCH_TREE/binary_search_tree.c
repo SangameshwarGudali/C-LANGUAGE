@@ -19,10 +19,18 @@ struct bst
 };
 
 
-int insert_at_bst(struct bst* p_bst , int new_key);
 struct bst* create_bst(void);
 struct bst_node* get_new_key(int new_key);
-void show_bst(struct bst* p_bst, char* msg);
+
+int insert_at_bst(struct bst* p_bst , int new_key);
+//void show_bst(struct bst* p_bst, char* msg);
+void preorder(struct bst* p_bst);
+void preorder_nodelevel(struct bst_node* p_root_node);
+void inorder(struct bst* p_bst);
+void inorder_nodelevel(struct bst_node* p_root_node);
+void postorder(struct bst* p_bst);
+void postorder_nodelevel(struct bst_node* p_root_node);
+
 
 int main(void)
 {
@@ -30,18 +38,17 @@ int main(void)
     int i;
     struct bst* p_bst = NULL;
 
+    int keys[] = {100, 50, 150, 25, 75, 200, 20, 70, 80, 175, 250, 24};
     p_bst = create_bst();
-    status = insert_at_bst(p_bst, 100);
 
-    for(i = 0; i < 10; ++i)
+    for(i = 0; i < sizeof(keys)/sizeof(int); ++i)
     {
-        status = insert_at_bst(p_bst, (i+2)*10);
-        assert(status == SUCCESS);
+        assert(insert_at_bst(p_bst, keys[i] ) == SUCCESS);
     }
-    show_bst(p_bst, "After insert bst");
 
-    free(p_bst);
-    p_bst = NULL;
+    preorder(p_bst);
+    inorder(p_bst);
+    postorder(p_bst);
 
     return(p_bst);
 }
@@ -127,32 +134,58 @@ int insert_at_bst(struct bst* p_bst, int new_key)
     
 }
 
-void show_bst(struct bst* p_bst, char* msg)
+void preorder(struct bst* p_bst)
 {
-    struct bst_node* p_run = NULL;
-    if(msg)
-        puts(msg);
-    p_run = p_bst->p_root_node;
-    printf("[START]->");
-
-    while(1)
-    {
-        if(p_run->left == NULL)
-            break;
-        else
-        {
-            printf("[%d]->", p_run->key);
-            p_run = p_run->left;
-        }
-
-        if(p_run->right == NULL)
-            break;
-        else
-        {
-            printf("[%d]->", p_run->key);
-            p_run = p_run->right;   
-        }
-    }
+    puts("Preorder");
+    printf("[START]<->");
+    preorder_nodelevel(p_bst->p_root_node);
     printf("[END]\n");
-    printf("nr_of_elements = %lld\n", p_bst->nr_of_elements);
 }
+
+void preorder_nodelevel(struct bst_node* p_root_node)
+{
+    if(p_root_node != NULL)
+    {
+        printf("[%d]<->", p_root_node->key);
+        preorder_nodelevel(p_root_node->left);
+        preorder_nodelevel(p_root_node->right);
+    }
+
+}
+
+void inorder(struct bst* p_bst)
+{
+    puts("Inorder");
+    printf("[START]<->");
+    inorder_nodelevel(p_bst->p_root_node);
+    printf("[END]\n");
+}
+
+void inorder_nodelevel(struct bst_node* p_root_node)
+{
+    if(p_root_node != NULL)
+    {
+        inorder_nodelevel(p_root_node->left);
+        printf("[%d]<->", p_root_node->key);
+        inorder_nodelevel(p_root_node->right);
+    }
+}
+
+void postorder(struct bst* p_bst)
+{
+    puts("Postorder");
+    printf("[START]<->");
+    postorder_nodelevel(p_bst->p_root_node);
+    printf("[END]\n");
+}
+
+void postorder_nodelevel(struct bst_node* p_root_node)
+{
+    if(p_root_node != NULL)
+    {
+        postorder_nodelevel(p_root_node->left);
+        postorder_nodelevel(p_root_node->right);
+        printf("[%d]<->", p_root_node->key);
+    }
+}
+
