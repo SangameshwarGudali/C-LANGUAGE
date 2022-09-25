@@ -1,0 +1,189 @@
+Built in data types in C 
+    integer data types 
+        [1] unsigned char 
+        [2] short 
+        [3] int 
+        [4] long int 
+        [5] long long int 
+e.g. 
+unsigned char uc; 
+short int small_number; 
+int num; 
+long int large_number; 
+long long int very_large_number; 
+
+All of the above statements are data definition statements 
+TYPE_NAME VARIABLE_NAME; 
+unsigned char uc;
+TYPE_NAME-> unsigned char 
+VARIABLE_NAME -> uc 
+
+short int small_number; 
+TYPE_NAME-> short int 
+VARIABLE_NAME-> small_number 
+
+int num; 
+TYPE_NAME -> int 
+VARIABLE_NAME -> num 
+
+long int large_number; 
+TYPE_NAME -> long int 
+VARIABLE_NAME -> large_number 
+
+long long int very_large_number; 
+TYPE_NAME -> long long int 
+VARIABLE_NAME -> very_large_number 
+
+--------------------------------------------
+1 byte = 2 ^ 0 
+2 byte = 2 ^ 1 
+4 byte = 2 ^ 2 
+8 byte = 2 ^ 3 
+PROCESSOR SUPPORTED WORD SIZES 
+
+Let M[1000] be a 1 byte integer 
+Let M[1000:1001] be a 2 byte integer 
+Let M[1000:1003] be a 4 byte integer 
+Let M[1000:1007] be an 8 byte integer 
+
+#---------------------------------------------
+char -> ASCII CODE 
+
+short int  1         
+int 2                
+long int 4           
+long long int  4    
+
+C Compiler 
+    [1] all sizes must be the power of 2 
+        [all sizes must be mapped to processor supported word sizes]
+    [2] sizeof short int <= sizeof int <= sizeof long int <= sizeof long long int 
+#-----------------------------------------------------
+WINDOWS COMPILER 
+MICROSOFT C Compiler (cl.exe)
+short int -> 2 
+int -> 4 
+long -> 4 
+long long -> 8 
+
+LINUX COMPILER 
+(GNU compiler)
+short int ->        2 
+int ->              4
+long int ->         8 
+long long int ->    8 
+
+1. Microsoft C compiler (cl.exe)
+        unsigned char   short   int     long    long long 
+32 BIT          1           2    4        4       8 
+64 BIT          1           2    4        4       8
+----------------------------------------------
+2. GNU C Compiler (cc1)
+        unsigned char   short   int     long    long long 
+32 BIT         1             2       4       4       8  
+64 BIT         1             2       4        8       8 
+----------------------------------------------
+
+int n;  // int == signed int 
+
+                            GCC         MICROSOFT
+                            32/64           32/64
+signed char                 1/1             1/1
+unsigned char               1/1             1/1
+
+short int                   2/2             2/2 
+unsigned short int          2/2             2/2
+
+int                         4/4             4/4
+unsigned int                4/4             4/4
+
+long int                    4/8             4/4
+unsigned long int           4/8             4/4
+
+long long int               8/8             8/8
+unsigned long long int      8/8             8/8
+
+char            1 byte signed integer | ASCII 
+unsigned char   1 byte POSITIVE INTEGER + 0 
+
+char c = 'A';   // 1 byte ascii 
+char c1 = -34;  //  1 byte negative integer 
+char c2 = 10;   // 1 byte positive integer 
+unsigned char c3 = 100;     // for 1 byte POSITIVE integers only 
+
+#---------------------------------------------------------------
+
+1 SUV 
+
+PERSONAL USE    ->      white 
+COMMERCIAL USE  ->      yellow 
+
+ALU 
+    MACHINE DOES NOT KNOW WHETHER A NUMBER IS POSITIVE OR NEGATIVE 
+    32 bit -> BIT PATTERN -> 
+    
+    1111-1111   1111-1111   1111-1111   1111-1111 : eax 
+    2^32-1 
+    -1
+
+    imul -> eax -> signed 
+    mul -> eax -> unisgned 
+
+    idiv -> eax -> signed 
+    div -> eax -> unsigned 
+
+    a > b 
+    SIGNED COMPARISON   unsigned COMPARISON 
+>   jg                  ja 
+>=  jge                 jae 
+<   jl                  jb 
+<=  jle                 jbe 
+==  je                  jz 
+!=  jne                 jnz 
+
+if(a > b) 
+
+int a, b; 
+unsigned int a, b; 
+jg  
+ja 
+#---------------------------------------------------
+
+integers 
+                    SIGNED                      UNSINGED 
+                    decimal                 decimal/hexadecimal/octal
+char        1       %hhd                    %hhu       %hhx    %hho 
+short       2       %hd                     %hu        %hx     %ho 
+int         3       %d                      %u         %x      %o 
+long        4       %ld                     %lu        %lx     %lo 
+long long   5       %lld                    %llu       %llx    %llo 
+
+1 byte char -> %c 
+
+0,1,2,3,4,5,6,7,8,9 -> DECIMAL INTEGER 
+0,1-> BINARY INTEGER 
+0,1,2,3,4,5,6,7-> OCTAL INTEGER 
+0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F-> HEXADECIMAL INTEGER 
+
+ -> GEOMETRIC SERIES 
+2 -> 3 
+
+GP -> GEOMETRIC SERIES 
+2 
+6 
+18 
+54
+162 
+
+2   5   8   11  14 -> ARITHMETIC SERIES 
+
+10 D GROUP 
+Take any five numbers in AP 
+
+a   a + d   a + d + d   a + d + d + d   a + d + d + d + d 
+
+a   a + d   a + 2d  a + 3d  a + 4d 
+
+a-2d a-d a a+d a+2d 
+
+a/r^2   a/r     a   a*r     a*r^2
