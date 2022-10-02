@@ -1,0 +1,244 @@
+The C Programming Language: 
+    BEGINNER: 
+        Programming in C : Ajay Mittal 
+        Programming with C : Schaum series : Gottfried : Exercise
+        Programming in C : Stephen Kochan : Content 
+    DIFFICULT WAY: 
+        The C Programming Language -> Dennis Ritchie & Ken Thompson -> K&R 
+    HOW TO GAIN EXPERTISE 
+        Expert C Programming - Deep C secrets -> Peter van den Linden 
+        ***Understanding and using C Pointers -> Richard Reese 
+        **Extreme C 
+    C required for Linux system & Kernel Programming 
+        GNU extensions to C programming language 
+        gcc user documentation : Chapter 6: Extensions to C Language Family 
+    Microsoft C extensions: 
+        Refer MSDN Visual C Documentation. 
+PATH: 
+    (1) Gottfried 
+    (2) Understanding and Using C Pointers 
+    (3) K&R 
+    (4) GNU extensions as required 
+    (5) Microsoft C as required 
+#---------------------------------------------------------------------------------
+Assembly Programming: 
+    GNU assembly: 
+        1)  Professional Assembly Language: Richard Blum 
+    NASM assembly: 
+        1)  Programming Ground up 
+    Microsoft Assembly: 
+        1)  Assembly Programming for x86 Computers (7th Edition)
+            Kip Irvine 
+    Advanced Assembly: 
+        1)  Modern X86 Assembly Language Programming (MASM) 
+        2)  Visual C++ Optimization with assembly coode (MASM)
+        3)  64 bit assembly programming 
+        4)  Beginning x64 assembly programming (GNU ASM)
+PATH: 
+    CHOOSE ASSEMBLER -> MASM 
+    1)  Assembly Programming for x86 Computers KIP IRVINE
+    2)  Modern X86 Assembly Language Programming (MASM) 
+    3)  Visual C++ Optimization with assembly coode (MASM)
+    4)  Intel Software Developers Manual Vol 4 -> OPTIMIZATION MANUAL
+        (DEEPEST AVAILABLE STUFF ON ASM) 
+#--------------------------------------------------------------------------
+C++ Programming: 
+    [FALLABCK : C++ PRIMER PLUS | THINKING IN C++]
+    BEGINNER (UPPER INTERMEDIATE / ADVANCE ON ABSOLUTE SCALE)
+        1)  C++ Primer by Stanley Liepmaan & Lajoie 
+            4th Edition -> 98 C++ 
+            5th Edition -> 11 C++ 
+        2)  Programming: Principles and practice using C++ -> STROUSTRUP 
+            1st -> 98 C++ 
+            2nd -> up to 2014 C++ 
+        3)  OVERVIEW: 
+                Essential C++ -> Liepmaan 
+                A tour of C++ -> Stroustrup 
+
+    INTERMEDIATE: (ADVANCE/VERY ADVANCE ON ABSOLUTE SCALE)
+        1)  The C++ Programming Language -> Stroustrup 
+            3rd Edition -> 98 C++ 
+            4th Edition -> 11 C++ 
+        2)  Effective C++ 
+        3)  More effective C++ 
+        4)  Effective STL 
+
+    ADVANCED: (VERY VERY VERY VERY ADVANCED)
+        1)  C++ Templates : The Complete Guide 
+            Josuittis / vander Voorde 
+            1st Edition -> 98 templates 
+            2nd Edition -> 2017 Templates 
+        2)  The Standard Tempalte Library 
+            Josuittis 
+            1st Edition -> 98 STL 
+            2nd Edition -> 2011/14 STL 
+        3)  Modern C++ Design 
+            Andrei Alexandrescu
+        4)  C++ Template Metaprogramming 
+        5)  Advanced Metaprogramming in Classic C++ 
+            (APRESS)
+        6)  C++ 2017 : Move Semantics -> Josuittis
+        7)  C++ 2017 : Josuittis 
+
+    ZEN LEVEL (NIRVANA)
+        1)  Inside C++ Object Model -> Liepmaan 
+        2)  Design and Evolution of C++ -> Stroustrup 
+        3)  Object Oriented C -> Alex Tobius Schneider 
+
+PATH: 
+    1]  C++ Primer -> 4th edition 
+        OR 
+        Programming: Principles and practice using C++ -> STROUSTRUP (My Recommendation)
+
+    2]  Effective C++   
+    
+    3]  C++ Templates : The Complete Guide 
+        Josuittis / vander Voorde              
+        1st Edition -> 98 templates 
+
+    4] C++ GUI Programming with Qt4
+        Summerfield 
+                        
+    5]  The Standard template Library -> Josuittis 1st Edition 
+    
+    6]  INSIDE COM -> DEL ROGERSON 
+    [4-5-6 can be read in parallel ]
+#---------------------------------------------------------------------
+    C++ 11 UPDATE -> C++ Primer 5th 
+    C++ 14 UPDATE -> Programming: Principles and practice using C++  2nd Editin 
+    C++ 17 UPDATE -> C++ 17 Josuittis 
+    C++ Template 17 UPDAE ->  C++ Templates : The Complete Guide  2nd edition 
+#---------------------------------------------------------------------
+Data structure and algorithms : 
+    PSEUODO CODE LEVEL 
+    Introduction to Algorithms 
+        THOMAS CORMEN / LEISERSON / RIVEST CLR (3rd Edition) (ADV)
+
+    Fundamentals of Computer Algorithm    (Upper INTERMEDIATE-ADVANCE)
+        Horowitz / Sahani 
+
+    C 
+        Algorithms in C -> Robert Sedgewick -> Vol 1 to 5 -> organized in two books (BEGINNER)
+        Fundamentals of Data Structure through C -> Sahani (BEGINNER)
+        Algorithm Design Manual -> Skienna -> (COMPETITIVE) (INTERMEDIATE)
+        Advanced Data Structures in C (ADV)
+
+    C++ 
+        Data structure and problem solving using C++ -> Mark Allen Weiss -> Latest (4th Edition) (Upper INTERMEDIATE-ADVANCE)
+        Data Structures in C++ -> Tamassia and Goodrich (Upper INTERMEDIATE-ADVANCE) 
+
+    JAVA
+        Algorithms in Java -> Robert Sedgewick (BEGINNER) 
+        Data structure in JAVA -> Tamassia & Goodrich (Upper INTERMEDIATE-ADVANCE)
+        A practical guide to data structure and algorithms using Java GOLDMAN AND GOLDMAN (VERY ADV)
+
+    ZEN 
+        The Art of Computer programming -> vol 1 to 4 
+
+    THINKING: 
+        HOW TO THINK ABOUT ALGORITHMS (RARE)
+
+PATH: 
+    Algorithms in C -> Robert Sedgewick -> Vol 1 to 5 -> organized in two books  
+    Algorithm Design Manual -> Skienna   
+    
+    Introduction to Algorithms 
+        THOMAS CORMEN / LEISERSON / RIVEST CLR (3rd Edition)
+    parallel 
+    Fundamentals of Computer Algorithm     
+        Horowitz / Sahani 
+
+    For other languags -> any one of the above books + CLRS parallel Fundamentals of computer algorithms
+#----------------------------------------------------------------------------------------
+System, GUI Kernel programming 
+
+Linux: 
+    Linux System Programming 
+    (1) Advanced Programming Under Unix Environment by W. Richard Stevens (3rd edition) (B)
+    (2) Linux System Programming -> Robert Love (VERY SIMPLE - BEGINNER)
+    (3) THE LINUX PROGRAMMING INTERFACE -> MICHAEL KERRISK -> (Very advanced)
+    (4) Hands-On System Programming with Linux: Explore Linux system programming interfaces, theory, and practice
+
+    Linux GUI Programming 
+    (1) X Windows Application Programming (ADV + RARE)
+    (2) X Windows System Programming -> Nabjyoti Barkakati  (ADV + RARE)
+
+Windows System & GUI Programming 
+    (1) Programming windows -> Charles Petzold (GUI)
+    (2) Programming applicaitons for MS windows -> 4th edition -> Jeffrey Richter 
+    (3) Windows System Programming by 4th Edition -> HART 
+    (4) Programming Windows Server Side Applications -> Jeffrey Richter 
+    (5) Windows System Programming -> PAVEL YOSIFOVICH 
+
+UNIX WORLD KERNEL & DEVICE DRIVER PROGRAMMING 
+    (1) The design of Unix Operating System by Maurice Bach 
+    (2) Magic Garden Explained (UNIX sys v r4)
+    (3) Design and implementation of 4.4BSD -> McKusick 
+    (4) Design and implementation of FREEBSD -> McKusick 
+    (5) Solaris Internals 1st edition (Solaris 10) -> Mcdouggal 
+    (6) Solaris Internals 2nd edition (OpenSolaris)
+    (7) Design and implementation of MINIX OS (THE MINIX BOOK) -> Andrew S Tanenbaum 
+    (8) John Lions Kernel Code Commentary 
+    (9) Understanding the Linux kernel 
+
+    (1) The Linux kernel module programming guide by salzman 
+    (2) The Linux Device Driver -> Rubini 
+    (3) Essential Linux Device Drivers 
+    (4) Linux Kernel Programming Part 1 & 2 -> BILLIMORIA
+
+WINDOWS WORLD KERNEL & DEVICE DRIVER PROGRAMMING 
+        VxD Drivers 
+    (1) Viscarola and Mason -> Windows Device Drivers (OLD and RARE)
+    (2) Windows NT Device Driver by Dekker 
+    (3) Art Baker -> WMD 
+    (4) Walter Oney -> WMD 
+    (5) Windows Driver Foundation -> MS Press 
+
+    (6) Inside Windows NT -> Helen Custor (RARE AND OLD)
+    (7) Inside Windows NT -> David Solomon 
+    (8) Inside Windows 2000 -> David Solomon 
+    (9) Windows Internals -> Solomon & Russinovitch (4edition)
+    (10) Windows Internals -> Solomon & Russinovitch (5edition)
+    (11) Windows Internals -> Solomon & Russinovitch (6edition)
+    (12) Windows Internals -> Solomon & Russinovitch & Yusifovich (7edition)
+
+    (13) Windows 95 secrets -> Matt Peatrick (OLD & RARE)
+    (14) Undocumented Windows NT 
+#----------------------------------------------------------------------------------------
+
+OS Books: 
+
+    Operating system concepts (not specific to OS / HARDWARE)
+        (1) Modern Operating System by Andrew Tanenbaum 
+        (2) Operating system concepts by William Stalling 
+        (3) Operating system : A design oriented approach -> Charles Crawly 
+
+    OS Specific (Design, some source code) (system programming)
+        (1) The Design of Unix OS -> Bach 
+        (2) Magic Garden Explained -> Coax & Goodhart 
+        (3) Design and Implementation of 4.4 BSD -> McKusick 
+        (4) Design and Implementation of FreeBSD -> McKusick 
+        (5) Solaris Internals (Solaris 10) -> Mcdouggal & Mcdouggal
+        (6) Solaris Internals (Open Solaris)
+        (7) Linux kernel Development 
+        (8) Linux Kernel Architecture (2.6.24) 
+        (9) Linux Kernel Development -> Robert Love -> O(1) 
+        (10) Understanding the linux kernel -> Cessati and Bovet 
+        (11) Windows Internals     
+        
+    Kernel Code Commentary 
+        (1) John Lions Kernel Code Commentary (Unix version 6)
+        (2) Maxwell kernel code commentary (Linux kernel 2.4)
+        (3) Understanding Linux VM manager (Mel Gorman 2.4.20 Linux kernel (mm))
+        (4) Understanding Linux Process (Neil O Gorman 2.4.22 Process manager (kernel))
+        (5) Design and implementation of Minix OS 
+
+#---------------------------------------------------------------------------------
+
+
+
+
+
+    
+
+

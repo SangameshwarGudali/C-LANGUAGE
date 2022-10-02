@@ -1,0 +1,125 @@
+Maths: 
+PRE-CALCULUS
+    [1] 5th to 10th CBSE 
+    [2] Euclidean Geometry -> Karmarkar 
+    [3] Algebra and Trigonometry -> Sullivan 
+#--------------------------------------------------
+Discrete mathematics & combinatorics 
+    [1] Kenneth Rosen -> Discrete 
+    [2] Discrete and combinatorial mathematics -> Grimaldi, Ramana 
+    [3] Introduction to theory of numbers -> David Burton 
+    [4] Principles of combinatorics ->  CHEN CHAUN-CHONG 
+                                        KOH KHEE-MENG 
+    [5] R. Merris -> combinatorics 
+    Olympiad prep 
+    [6] Mathematical Cirlces 
+    [7] An Excursion in mathematics 
+    Abstract algebra 
+    [1] Heirnstein -> Abstract Algebra 
+    [2] DUMMIT AND FOOT -> ABSTRACT ALGEBRA 
+
+    [1] Fundamentals of Discrete mathematics -> KD JOSHI 
+    [2] Applied Discrete Structures -> KD JOSHI 
+#----------------------------------------------------------------------
+Continuous Mathematics: 
+    [1] THOMAS CALCULUS 
+    [2] CALCULUS : early transcendentals -> STEWART 
+    [3] Advanced Engineering mathematics -> Kreyjick 
+#-------------------------------------------------------
+Real analysis 
+    [1] CALCULUS for scientists and enginners 
+    [2] Introduction to real analysis -> SHERBERT 
+    [3] Introuction to real analysis -> WALTER RUDIN 
+    [4] Real & Complex Analysis -> RUDIN
+    [5] General Topology -> MUNKRES 
+#--------------------------------------------------------------
+    [1] Linear Algebra -> Gilbert Strng 
+    [2] Probability and statistics for scientists and engineers 
+#--------------------------------------------------------------
+Physics: 
+    [1] haliday - resnisk 
+    [2] University Physics -> Zimansky 
+    [3] Bear & Johnsons -> Statics & Dynamics 
+    [4] IE IRIDOV -> Problems in general physics 
+    [5] IRIDOV -> Introduction to electromagnetism 
+
+    [6] Lectures in Physics -> Vol 1 , 2, 3 -> RICHARD FEYNMAAN 
+        vol 1 -> Newtonian mechanics 
+        vol 2 -> electromagnetism 
+        vol 3 -> QM 
+#-------------------------------------------------------------------
+Semiconductor Physics 
+    Donald Naeman 
+#------------------------------------------------------------------
+EDC -> Donald Naeman 
+#-----------------------------------------------------------------
+Digital Electornics 
+    RP Jain 
+    Morris Mano 
+    STEPHEN BROWN 
+    
+    FPGA -> ASIC -> LINUX KERNEL -> EMBEDDED #
+#---------------------------------------------------------------------
+Computer Orgnanization 
+    Essentual CO --> COMER 
+    Zaky 
+    Structured CO -> Andrew Tanenbaum 
+    Hardware software interface -> Hanessey - Patterson 
+    quantitative approach -> Hanessey patterns 
+    Advanced Computer   ->    HWANG 
+#---------------------------------------------------------------------
+COM 
+    Inside COM 
+    Essential COM 
+    Inside OLE 
+#-----------------------------------------------------------------------
+JAVA 
+    Core Java Vol 1 Horstman & Horstman 
+    Core Java Vol 2 
+
+    Design Patterns in Java 
+
+    Java Enterprise Services 
+        Oracle JEE -> Vol 1, Vol 2 
+
+    Frameworks 
+        Beans, Struts 
+
+        Spring, Hibernate (ORM)
+
+    Java Performance Tuning 
+
+    JVM Specification 
+        Chapter 2 -> The structure of Class File 
+
+    HARNESSING JAVA -> Vol 1, 2, 3
+#-----------------------------------------------------------
+Python 
+    Dive into Python 3 
+    Python : A Complete Introduction to Python Programming Language -> Mark Summerfield 
+    Learning Python -> Mark Lutz 5th edition 
+    Programming Python -> Mark Lutz 4th edition 
+
+    ML & DATA SCIENCE & CLOUD & WEB (FLASK & DJANGO) & DEVOPS & Embedded & IOT 
+        [1] Oreilly 
+        [2] APRESS 
+        [3] PACKT 
+#-----------------------------------------------------------------------------
+JAVASCRIPT 
+    [1] Javascript - Definitive GUIDE -> David Flangan 
+#--------------------------------------------------------------------------------
+Golang 
+    [1] The way of GO [Ivo Balbert] 
+    [2] The GO Programming Language -> Kerenighan & Pike 
+    [3] Concurrency Patterns in Go 
+#--------------------------------------------------------------------------------
+The Rust Programming Language -> OReilly 
+#---------------------------------------------------------------
+CLR via C# -> Richter 
+#---------------------------------------------------------------
+Hello, Android 
+#----------------------------
+Secure C/C++ Programming 
+Oreilly 
+
+
