@@ -1,9 +1,13 @@
 #include <windows.h>
 #include <commctrl.h>
+#include <strsafe.h>
+
 
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "kernel32.lib")
 #pragma comment(lib, "gdi32.lib")
+#pragma comment(lib, "comctl32.lib")
+
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void AddMenus(HWND);
