@@ -1,0 +1,15 @@
+How to use exit algorithm in my program? 
+
+Step 1: You must write algorithm name, algorithm input element(s) type, 
+        algorithm output element type 
+        [This is known as TYPE DECLARATION of algorithm] 
+        void exit(int); 
+
+Step 2: 
+    int main(void)
+    {
+
+        exit(0);    // CALL / USE OF AN ALGORITHM
+    }
+
+// CALL TO AN ALGORITHM / USE OF AN ALGORITHM is a COMPUTE STATEMENT 

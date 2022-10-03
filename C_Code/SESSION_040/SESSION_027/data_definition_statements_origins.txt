@@ -1,0 +1,20 @@
+Reserve M[1000:1003] for integer 1 
+Reserve M[1004:1007] for integer 2 
+Reserve M[1008:1011] for storing summation of integer 1 and integer 2 
+
+#--------------------------------------------------------------------------
+.section .data 
+
+num_1:
+.int    0  
+
+num_2: 
+.int    0 
+
+summation: 
+.int    0
+
+
+int num_1; 
+int num_2; 
+int summation; 

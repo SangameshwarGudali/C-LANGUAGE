@@ -1,0 +1,10 @@
+Aim:    The syntax(grammar) of a language should be such that 
+        expressing a desired computation should be intuitive!
+
+PROCESS: 
+[0] Program source code should be made of up of statements 
+    OR 
+    Basic unit of reading / developing the source code should be 
+    statement (much as we find in case of natural languages)
+[1] Dedicated statements to reserve data (Data Definition Statements)
+[2] Express computation on reserved data (Compute Statements)

@@ -1,0 +1,56 @@
+Syntax of writing algorithms in C. 
+
+ALGORITHM SYNTAX HAS TWO PARTS 
+    [1] HEADER OF ALGORITHM 
+    [2] BODY OF ALGORITHM 
+
+
+[1] HEADER OF ALGORITHM 
+    a] Select a name for algorithm                          : main 
+    b] List of input data types enclosed in round brackets  : main(void) 
+    c] Output data type                                     : int main(void)
+
+    HEADER SYNTAX 
+    OUTPUT_DATA_TYPE  NAME_OF_ALGORITHM(COMMA_SEPARATE_INPUT_DATA_TYPE_LIST)
+
+[2] BODY OF ALGORITHM: 
+    Body of algorithm consists of sequence of COMPUTE STATEMENTS enclosed in curly brackets 
+
+    int main(void)
+    {
+
+    }
+
+
+    int main()
+    (
+
+    )
+
+    int main()
+    [
+
+    ] 
+
+    int main()
+    {
+
+    }
+
+/// FOR REFERENCE 
+main ( int, int )
+
+() -> ROUND BRACKET     -> GOL KANS 
+[] -> SQUARE BRACKET    -> CHOUKANI KANS 
+{} -> CURLY BRACKETS    -> MAHIRAPI KANS 
+
+( -> Opening round bracket 
+) -> closing round bracket 
+
+[ -> Opening square bracket 
+] -> closing square bracket 
+
+{ -> Opening curly bracket 
+} -> closing curly bracket 
+
+#----------------------------------------------------

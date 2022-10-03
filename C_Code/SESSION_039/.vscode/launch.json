@@ -5,13 +5,17 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": [
+        ""
+      ],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/Sangameshwar/OneDrive/C_PROGRAMMING_LANGUAGE/MSTC ONEDRIVE/MSTC_PROGRAMMS/SESSION_025",
-      "program": "c:/Users/Sangameshwar/OneDrive/C_PROGRAMMING_LANGUAGE/MSTC ONEDRIVE/MSTC_PROGRAMMS/SESSION_025/build/Debug/outDebug",
+      "cwd": "c:/Users/yoges/OneDrive/Documents/CPA/CLASS/C/MST_2/SESSION_039",
+      "environment": [],
+      "program": "c:/Users/yoges/OneDrive/Documents/CPA/CLASS/C/MST_2/SESSION_039/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
+      "externalConsole": false,
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

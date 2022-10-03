@@ -1,0 +1,81 @@
+int num_1;  //  M[1000:1003]
+
+General Format of Data Definition Statement Under C Language: 
+
+Data_Type_Name Variable_Name [= Initial Value]; 
+
+int num_1;      // Uninitialized data definition statement 
+int num_1 = 10; // Initialized data definition statement 
+
+#------------------------------------------------------------------
+int num_1; 
+    M[1000:1003] -> RESERVE
+    num_1 -> TYPE(int)
+
+int num_1; 
+
+When compiler reads this statement, it comes to know about two things 
+    [1] It must generate a statement for assembler so that assembler 
+        reserves 4 bytes. 
+    [2] Type of variable name num_1 is INTEGER. 
+
+#--------------------------------------------------------------------------
+int num_1;  
+
+COMPILER 
+
+num_1:
+.int    10 
+
+ASSEMBLER 
+
+reserves M[1000:1003] 
+#----------------------------------------------------------------------------------
+
+Data_Type_Name Variable_Name; 
+
+int num_1; 
+
+num_1   -> SELECTED BY PROGRAMMER 
+int     -> SELECTED BY LANGUAGE 
+
+#-------------------------------------------------------------------------------------
+
+DATA TYPE: 
+    NUMBERS 
+    NUMBERS REQUIRE MULTIPLE BYTES TO STORE 
+
+TYPE: 
+int num_1; 
+int num_2; 
+int sum; 
+
+#---------------------------------------------------
+
+num_1 + num_2; 
+
+num_1:
+.int    10 
+
+#--------------------
+
+c = a + b; 
+
+id op id op id -> Lexical analysis -> Parsing 
+
+I am eating a mango 
+
+S + V + C -> Lexical Analysis 
+
+S + V + C -> Parsing 
+
+            + 
+        a       b 
+    =   int     int  
+c 
+int 
+
+movl    a, %eax 
+movl    b, %edx 
+addl    %edx, %eax 
+movl    %eax,c 
