@@ -1,0 +1,72 @@
+EXPRESSION = VALID COMBINATION OF OPERATORS AND OPERANDS IS KNOWN AS EXPRESSION. 
+int a; 
+int b; 
+int result; 
+int main(void)
+{
+    result = a + b; 
+    result = (a + b) * b; 
+}
+
+1] Ary of operator 
+2] Prefix/Infix/Postfix category 
+3] Precedence 
+4] Associativity 
+
+#---------------------------------------------------------
+a: int 
+b: int 
+a + b: int 
+a * b: int 
+a / b: int 
+a % b: int 
+((float)a)/b->float
+
+integer expression 
+
+a:int 
+b:int 
+a+b is an integer expression. 
+
+a:float 
+b:float 
+a+b is a floating point expression. 
+
+expression -> 
+    constant expression 
+    variable expression 
+
+10+5 -> constant integer expression 
+1.1+2.2->constant floating point expression 
+
+a:int 
+b:int 
+a+b -> VARIABLE integer expression 
+
+10 -> constant 
+a -> variable 
+
+
+#------------------------------------------------------
+const int a = 10; 
+const int b = 20; 
+
+a + b -> constant integer expression 
+
+10 + 5 
+
+literal integer expression 
+
+10 + 5
+#------------------------------------------------------
+
+int A[CONSTANT INTEGER EXPRESSION]; 
+
+int a[10]; 
+
+const int N=10; 
+
+int a[N]; 
+
+const int a = 10; 
+

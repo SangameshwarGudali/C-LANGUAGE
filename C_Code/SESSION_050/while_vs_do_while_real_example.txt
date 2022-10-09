@@ -1,0 +1,23 @@
+check the syllabus; 
+while(you find subject feasible)
+{
+    attend lecture; 
+    lecture = lecture + 1;
+}
+
+...
+
+st 
+st 
+st 
+
+do
+{
+    attend lecture; 
+    lecture = lecture + 1; 
+}while(you find subject feasible); 
+
+#----------------------------------------
+
+
+

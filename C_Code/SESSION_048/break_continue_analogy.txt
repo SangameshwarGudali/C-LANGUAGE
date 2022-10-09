@@ -1,0 +1,39 @@
+BOOT-CAMP -> JOHN MARY 
+
+day = 1; 
+while(day <= 7)
+{
+    6 to 7 
+    7 to 8:30 
+    8:30 to 10 
+    10 to 12 
+
+    if(Contingency situation arises)
+        break; 
+
+
+    9 to 10:30 
+    day = day + 1; 
+}
+
+day = 1; 
+while(day <= 7)
+{
+    6 to 7 
+    7 to 8:30 
+    8:30 to 10 
+    10 to 12 
+
+    if(Contingency situation arises)
+        break; 
+
+    /* 5:30 */ 
+    if(ASTHAMA/PHOBIA)
+    {
+        day = day + 1; 
+        continue; 
+    }
+
+    6 to 7:30 -> HILL CLIMBING 
+    day = day + 1; 
+}

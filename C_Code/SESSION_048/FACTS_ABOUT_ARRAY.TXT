@@ -1,0 +1,59 @@
+[1] If length of array (= total number of elements in array)
+    is N then the range of valid indices = 
+    0, 1, 2, 3, 4, ..., N-1 
+
+    i.e. If array has length 8 the range of valid indices is 
+    0, 1, 2, 3, 4, 5, 6, 7 
+
+    If array has length 5 then range of valid indices is 
+    0, 1, 2, 3, 4 
+
+[2] How to write a loop which generates the valid indices
+    of array whose length is N. 
+
+/* Using while loop */ 
+int N = <length of array>; 
+
+int main(void)
+{
+    int index;  /* Index variable for loop */ 
+    index = 0;  /* First valid index */ 
+    while(index <= N-1)
+    {
+        /*  If you write any statement which 
+            takes some action on expression a[index]
+            then that action will be taken on 
+            ALL ELEMENTS OF array
+        */ 
+        index = index + 1; 
+    }
+}
+
+/* Using for loop */ 
+int N = <length of array>; 
+
+int main(void)
+{
+    int index; 
+    for(index = 0; index <= N-1; index = index + 1)
+    {
+
+    }
+}
+
+int k; 
+k = 0; 
+while(k <= N-1)
+{
+    ACTION(a[k])
+    k = k + 1; 
+}
+
+OR 
+
+for(k = 0; k <= N-1; k = k + 1)
+{
+    ACTION(a[k])
+}
+
+//////////////////////////////////////////////
