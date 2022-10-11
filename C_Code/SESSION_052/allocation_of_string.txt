@@ -1,0 +1,36 @@
+char msg1[] = "MSG1";   /* string will go to read/write data section, msg1 var will be present */ 
+char* msg2 = "MSG2";    /* string will go to read only data section, msg2 var will be present */ 
+
+int main(void)
+{
+    char msg3[] = "MSG3"; /* string will go to stack, var name will not be present */ 
+    char* msg4 = "MSG4";  /* string will go to read only data section, var name will not be present */
+    static char msg5[] = "MSG5"; /* string will go to local common memory area 
+                                    variable name will not be present */ 
+    static char* msg6 = "MSG6";  /* string will go to read only data sectin 
+                                    msg6 will be mangled and stored in local common 
+                                    memory areay 
+                                    */ 
+    /* FUTURE */ 
+    static const char* msg7 = "MSG7"; 
+    static char *const msg8 = "MSG8";
+}
+
+.section .rodata 
+    msg2: 
+    .string "MSG2"
+
+    .LC1:
+    .string    "MSG4"
+
+.section .data 
+    msg1:
+    .string "MSG1" 
+
+.section .text 
+.type main, @function 
+main: 
+    pushl   %ebp 
+    movl    %esp, %ebp 
+
+    subl    $n, %esp 
