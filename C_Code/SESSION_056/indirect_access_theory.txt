@@ -1,0 +1,62 @@
+.section .data 
+    n: 
+    .int    0 
+
+.section .text 
+
+    movl    n, $25  # Direct access. Why? 
+                    # Because after assembling and linking 
+                    # n will be converted into address and that 
+                    # address will be stored as a part of machine 
+                    # instruction. Therefore, processor will get 
+                    # the address of memory location as a part of 
+                    # instruction. Such access is known as direct 
+                    # access. 
+
+    # Goal: Use indirect access to 
+    # write constant 50 to n 
+
+    movl    %r0, $n     # register 0 will contain the address of n 
+    movl    (%r0), $50  # This instruction will tell microprocessor 
+                        # to interpret the content of register 0 
+                        # as an address of memory location and will ask 
+                        # microprocessor to write 50 from four bytes of that 
+                        # address. 
+                        # Because we have stored the address of n in 
+                        # r0 in previous instruction, this instruction will 
+                        # have the effect of writing 50 on n.
+#------------------------------------------------------------------------------
+
+Intel microprocessor: GNU Assembler : 32 Bit 
+
+.section .data 
+    n: 
+    .int    0 
+
+.section .text 
+    movl    $25, n  # Direct access 
+
+    movl    $n, %eax 
+    movl    $50, (%eax)
+
+Intel microprocessor: Microsoft Assembler : 32 bit 
+
+.data 
+    n   DOWRD   0 
+
+.text 
+
+main PROC 
+main: 
+
+    mov DWORD PTR n, 25     # DIRECT 
+
+    mov eax, OFFSET n 
+    mov DOWRD PTR [eax], 50 
+
+main ENDP 
+end main 
+
+
+
+

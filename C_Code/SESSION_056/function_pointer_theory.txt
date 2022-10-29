@@ -1,0 +1,58 @@
+int my_add(int a, int b)
+{
+    return a + b; 
+}
+
+//// ASSEMBLY CONVERSION 
+
+.section .text 
+.globl my_add 
+.type   my_add, @function 
+my_add: 
+    pushl   %ebp 
+    movl    %esp, %ebp 
+
+    movl    8(%ebp), %eax
+    addl    12(%ebp), %eax 
+
+    movl    %ebp, %esp 
+    popl    %ebp 
+    ret 
+
+= my_add 
+
+FUNCTION NAME STANDS FOR OR REPRESENTS THE ADDRESS OF FIRST BYTE OF FIRST INSTRUCTION OF A FUNCTION 
+
+my_add = address of first byte,  of instruction pushl %ebp 
+
+In order to store this address we need pointer variable known as pointer to function 
+
+It is defined in C as follows
+
+int (*pfn)(int, int); 
+
+and address of function (i.e. address of first byte of first instruction of a function)
+is stored in pointer to function as follows 
+
+pfn = my_add 
+
+#-----------------------
+
+at assembly level, pfn is put in data or BSS section 
+
+.section .data 
+    pfn: 
+    .int    0 
+
+instruction 
+
+movl    pfn, $my_add 
+
+will store address of function into function pointer 
+
+In assembly 
+$my_add -> represents address of function 
+pfn -> pointer to function 
+
+#-----------------------------------------------------------------------
+

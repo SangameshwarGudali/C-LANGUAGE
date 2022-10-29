@@ -1,0 +1,46 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+
+int main(void)
+{
+    puts("Hello,World!"); 
+    exit(0); 
+}
+
+#---------------------------C++ 
+
+#include <iostream> 
+
+int main(void)
+{
+    std::cout << "Hello,World!" << std::endl; 
+    return 0; 
+}
+
+#--------------------------Java -> HelloWorld.java
+
+public class HelloWorld{
+    public static void main(String args[]){
+        System.out.println("Hello, World!"); 
+    }
+} 
+
+#------------------------------- Python 
+
+import sys 
+
+def main(): 
+    print("Hello,World!")
+    sys.exit(0) 
+
+main() 
+
+#-------------------------------------Go 
+
+import fmt
+
+func main(){
+    fmt.Print("Hello,World!\n"); 
+}
+
+#-----------------------------------
