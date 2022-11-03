@@ -1,0 +1,49 @@
+ALGORITHM NAME:     find_max 
+INPUT:              i)  A: array of integers 
+                    ii) N: Total Number of elements in array 
+
+OUTPUT:             Maximum element in Input array. 
+
+ALGORITHM: 
+
+Step 1: Allocate two integer variables 
+        'index'         :   int to store the current index 
+        'current_max'   :   int to store the value of maximum element 
+                            encountered so far. 
+
+Step 2: 
+        current_max <- A[0]
+        index <- 1 
+
+Step 3: Evaluate index < N 
+        if False 
+        then Go to Step 6 
+        else Go to step 4 
+
+Step 4: Evaluate A[index] > current_max
+        if True 
+        then 
+            current_max <- A[index]
+
+Step 5: index <- index + 1 
+        Go  to Step 3 
+
+Step 6: return current_max as output of algorithm. 
+
+#-------------------------------------------------------------
+
+The above algorithm is designed to work on array of ANY size 
+containing ANY integers. 
+
+Putting it in simpler words, if you take array of size of your 
+choice and if you put values of your choice in the array, then 
+subjecting the array to above algorithm will allow you to find 
+out the maximum value within array. 
+
+#--------------------------------------------------------------
+
+Once again, you will note that the algorithm is GENREAL on paper 
+but when converted to C source code, it will work only on ONE 
+array of ONE size. 
+
+#-----------------------------------------------------------------

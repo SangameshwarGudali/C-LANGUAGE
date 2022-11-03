@@ -1,0 +1,47 @@
+ALGORITHM NAME: max3 
+INPUT:          any three integers n1, n2, n3 
+OUTPUT:         maximum integer amongst three 
+ALGORITHM: 
+
+Step 1: Allocate integer variable max_integer 
+
+Step 2: Evaluate n1 > n2 
+        if evaluated TRUE 
+        then 
+            max_integer <- n1 
+        else 
+            max_integer <- n2 
+    
+Step 3: 
+        Evaluate n3 > max_integer 
+        if evaluated TRUE 
+        then 
+            max_integer <- n3 
+
+Step 4: return max_integer as the OUTPUT of algorithm 
+
+#--------------------------------------------------------------------
+
+The above algorithm will output maximum out of ANY THREE integers. 
+Putting it in simpler terms, the algorithm is designed to work 
+on ANY three integers. 
+
+#---------------------------------------------------------------------
+
+But the C program that we wrote worked for specific three integer 
+variables, n1, n2 and n3. 
+
+If the same algorithm must work for p, q, and r then it will required 
+the reimplementation of the entire algorithm in terms of p, q, and r. 
+
+#---------------------------------------------------------------------
+
+The algorithm which is general in nature on text-book becomes 
+specific to a certain data set when brought to an implementation 
+level. 
+
+#----------------------------------------------------------------------
+
+Find out the cause and the solution on the loss of generality.
+
+#-----------------------------------------------------------------------

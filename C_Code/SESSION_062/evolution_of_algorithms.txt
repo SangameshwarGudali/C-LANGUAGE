@@ -1,0 +1,50 @@
+ALGORITHM ->
+    PROCEDURE -> PASCAL 
+
+    FUNCTION -> C 
+
+    COROUTINE
+        ->  SUBROUTINE 
+                ->  PROCEDURE 
+                        ->  ALLOWED TO CHANGE INPUT PARAMETERS -> PROCEDURE 
+                        ->  WHICH ARE NOT ALLOWED TO CHANGE INPUT PARAMETERS -> FUNCTION 
+
+                            OOP 
+                            -> member function / method 
+                            -> static member function / static method 
+                            -> non-static virtual function / virtual method 
+                            -> pure function / pure method 
+                            -> pure and virtual function / pure and virtual method 
+
+int main(void)
+{
+    int n1, n2, n3; 
+    int p, q, r; 
+
+    int* p1; 
+    int* p2; 
+    int *p3; 
+    int max_integer; 
+
+    p1 = &a; 
+    p2 = &b; 
+    p3 = &c; 
+
+    if(*p1 > *p2)
+    {
+        max_integer = *p1; 
+    }
+    else 
+    {
+        max_integer = *p2; 
+    }
+
+    if(*p3 > max_integer)
+        max_integer = *p3; 
+
+
+    p1 = &p; 
+    p2 = &q; 
+    p3 = &r; 
+
+}
