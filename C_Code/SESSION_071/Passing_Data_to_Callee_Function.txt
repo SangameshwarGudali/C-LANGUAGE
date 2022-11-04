@@ -1,0 +1,160 @@
+Let test_function() be a function under consideration. 
+
+[1] If the input parameters of of test_function() is one of the 
+    built in data types such as 
+    char, unsigned char, 
+    short, unsigned short, 
+    int, unsigned int, 
+    long, unsigned long, 
+    long long, unsigned long long, 
+    float, double 
+
+    THEN the parameters can be passed to the function in one of the 
+    two ways 
+    (A) pass by value 
+
+    (B) pass by address 
+
+    In Pass by value approach the caller function copies the value 
+    of actual parameter into the formal parameter. Not the address. 
+
+    Effect: If the callee function modifies the formal parameter then 
+    the actual parameter in caller REMAINS UN - AFFECTED because 
+    actual parameter is at DIFFERENT memory location than that of formal 
+    parameter! 
+    -----------------------------------------------------------------------
+    In pass by address approach, the caller functions sends the address 
+    of its local variable / variable to the callee function. 
+
+    The callee function accepts the address in pointer. By de-referencing 
+    a pointer, the callee function can access the local variable of 
+    caller within itself. 
+
+    the callee function has capacity to read as well as WRITE (modify)
+    the contents of caller's local variable 
+    -----------------------------------------------------------------------
+
+[2] If you want to pass array of any data type to a function then note that 
+    the array CANNOT BE PASSED BY VALUE to a function! 
+    (consider arrays of size 1000, or even 1 million integers) 
+ 
+    But curiously, we do not send array by address! 
+    We send address of first element of array to the callee function 
+    and callee function catches this address NOT IN POINTER TO ARRAY 
+    BUT IN POINTER TO TYPE OF ARRAY ELEMENT! (VERY VERY VERY IMPORTANT)
+
+    Callee function takes advantage of pointer arithmetic 
+    and it reaches element at particular index in array by 
+    adding that index value to pointer. And then it can read / write 
+    on array elements in caller function's array. 
+
+    Also, how large integer can we add to the pointer to first element 
+    of array? Answer is (size - 1). 
+
+    ptr_to_first_element  + 0 
+    to 
+    ptr_to_first_element + size - 1 
+    is VALID 
+
+    Therefore, size of array is also sent as one of the parameters of 
+    the function! 
+
+    e.g. 
+
+    void test_function(int* ptr_to_first_element, int size); 
+
+    int main(void)
+    {
+        int arr[5]; 
+
+        test_function(&arr[0], 5); 
+    }
+
+    void test_function(int* ptr_to_first_element, int size)
+    {
+        *(ptr_to_first_element + 0)    -> to access index 0 element
+        *(ptr_to_first_element + 1)    -> to access index 1 element
+        *(ptr_to_first_element + 2)    -> to access index 2 element
+        *(ptr_to_first_element + 3)    -> to access index 3 element
+        *(ptr_to_first_element + 4)    -> to access index 4 element
+
+        If you want to read then put 
+
+        *(ptr_to_first_element + i) ON RHS OF ASSIGNMENT STATEMENT 
+
+        If you want to write then put 
+        *(ptr_to_first_element + i) ON LHS of ASSIGNMENT STATEMENT. 
+    }
+
+[3] Like array, an intsance of any structure cannot be passed to a 
+    function by value. (Again the reason being the possible large 
+    size of structure intsance!)
+
+    Therefore, we send an address of structure instance to the callee 
+    function. 
+
+    The callee function catches the address in pointer to a structure. 
+    Using pointer to a structure, an arrow operator and a member name 
+    of a structure, a particular member within input structure instance 
+    can be accessed by the callee function! 
+
+    e.g. 
+
+    struct X 
+    {
+        int a; 
+        char b; 
+        float c; 
+    }; 
+
+    void test_function(struct X* ptr_instance_of_X); 
+
+    int main(void) 
+    {
+        struct X inX; 
+        test_function(&inX); 
+    }
+
+    void test_function(struct X* ptr_instance_of_X)
+    {
+        ptr_instance_of_X->a    (to access member 'a' of input structre instance, 
+                                in our case inX in main)
+        ptr_instance_of_X->b    (to access member 'b' of input structre instance, 
+                                in our case inX in main)
+        ptr_instance_of_X->c    (to access member 'c' of input structre instance, 
+                                in our case inX in main)
+
+        To read from members keep 
+        ptr_instance_of_X->a 
+        ptr_instance_of_X->b 
+        ptr_instance_of_X->c 
+        ON RHS of ASSIGNMENT operator 
+
+        To write to the members, keep 
+        ptr_instance_of_X->a 
+        ptr_instance_of_X->b 
+        ptr_instance_of_X->c 
+        on LHS of ASSIGNMENT operator 
+    }
+
+struct A* pA = &inA; 
+
+pA->a   ==  (*pA).a 
+pA->b   ==  (*pA).b
+pA->c   ==  (*pA).c 
+
+#-----------------------------------------------------------------------
+FOR EXPERIENCED DEVELOPER 
+int n;                  /* instance variable */ 
+int* p;                 /* pointer variable */ 
+int& ref = var_name;    /* reference variable */ 
+int&& rr_ref = rvalue;  /* rvalue reference variable */ 
+
+C -> instance, pointer 
+C++ -> instance, pointer, reference, rvalue reference 
+Java -> Basic data type (instance), user defined class objects(reference )
+
+Python/Perl/PHP/Javascript -> Reference 
+#-----------------------------------------------------------------------
+
+

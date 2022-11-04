@@ -1,0 +1,76 @@
+The point in time at which a block of memory is in 
+mapped and in use state is known as the birth of a 
+memory block! 
+
+The point in time at which a block of memory either 
+goes into unmapped state or mapped but not in use 
+state is known as the termination of a memory block. 
+
+The time elapsed between the birth of a memory block 
+to its termination is known as the LIFE-TIME of a 
+memory block! 
+
+#--------------------------------------------------------
+
+Life Time of a data in C. 
+
+Under C Programming Language the data can be allocated in 
+two ways 
+
+(1) By writing a global or local data definition statement 
+(2) By calling dynamic memory allocation functions 
+    such as malloc(), calloc(), realloc(). 
+
+Life-time of data allocated by (1). 
+(1) Data allocated using data definition statements 
+    sub-case (i)    Data definition statement is GLOBAL 
+                    LIFE-TIME OF DATA = LIFE-TIME OF PROGRAM 
+                    Meaning that 
+                    
+                    all data allocated using global data 
+                    definition statements comes in mapped 
+                    and in use state as soon as the executable file 
+                    is launched for the execution 
+
+                    and 
+
+                    that data goes to unmapped state only after the
+                    program (process / application terminates)
+
+                    LIFE TIME OF rodata & data & bss section 
+                    = 
+                    ENTIRE PROGRAM 
+
+    sub-case (ii)   Data definition statement is LOCAL 
+
+                    LOCAL DATA DEFINITION SATEMENT 
+                    = (a) formal paramters + (b) local varibles 
+
+                    Memory to be allocated in response to local data 
+                    definition statements is allocated (mapped + in use)
+                    at the call of the function and de-allocated (
+                    mapped + not in use OR unmapped) when the function returns! 
+                    
+                    LIFE TIME OF LOCAL STORAGE (a) + (b) 
+                    = 
+                    LIFE TIME OF FUNCTION CALL. 
+                    (Time for which the control of program stays in function)
+
+(2) By calling dynamic memory allocation functions 
+    such as malloc(), calloc(), realloc(). 
+
+    LIFE TIME OF STORAGE ALLOCATED BY malloc(), calloc(), realloc() like function 
+    (NOTE WE ARE NOT CONSIDERING THE LIFE-TIME OF POINTER VARIABLES WHICH IS 
+    USED TO STORE THE BASE ADDERESS OF THE ALLOCATED BLOCK IN ORDER TO ACCESS IT)
+
+    LIFE-TIME IS DECIDED BY THE PROGAMMER! 
+
+    The memory block allocated on heap by using one of the malloc(), calloc() or 
+    realloc() does not get unmapped or mapped but not in use UNLESS it is freed 
+    using free() function. 
+
+    To 'FREE' a block on heap you must call function free() with the base 
+    address of that block. 
+
+    This base address is returned by malloc(), calloc() or realloc() at the time of 
+    allocation. 
