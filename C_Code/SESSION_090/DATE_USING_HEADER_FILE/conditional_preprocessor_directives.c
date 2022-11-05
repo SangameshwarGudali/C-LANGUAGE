@@ -1,0 +1,3 @@
+#ifdef SYMBOL 
+    CODE 
+#endif 

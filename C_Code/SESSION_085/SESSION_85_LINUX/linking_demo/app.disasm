@@ -1,0 +1,75 @@
+
+app.exe:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+08048094 <main>:
+ 8048094:	55                   	push   %ebp
+ 8048095:	89 e5                	mov    %esp,%ebp
+ 8048097:	c7 05 e0 90 04 08 64 	movl   $0x64,0x80490e0
+ 804809e:	00 00 00 
+ 80480a1:	b8 00 00 00 00       	mov    $0x0,%eax
+ 80480a6:	5d                   	pop    %ebp
+ 80480a7:	c3                   	ret    
+
+Disassembly of section .eh_frame:
+
+080480a8 <.eh_frame>:
+ 80480a8:	14 00                	adc    $0x0,%al
+ 80480aa:	00 00                	add    %al,(%eax)
+ 80480ac:	00 00                	add    %al,(%eax)
+ 80480ae:	00 00                	add    %al,(%eax)
+ 80480b0:	01 7a 52             	add    %edi,0x52(%edx)
+ 80480b3:	00 01                	add    %al,(%ecx)
+ 80480b5:	7c 08                	jl     80480bf <main+0x2b>
+ 80480b7:	01 1b                	add    %ebx,(%ebx)
+ 80480b9:	0c 04                	or     $0x4,%al
+ 80480bb:	04 88                	add    $0x88,%al
+ 80480bd:	01 00                	add    %eax,(%eax)
+ 80480bf:	00 1c 00             	add    %bl,(%eax,%eax,1)
+ 80480c2:	00 00                	add    %al,(%eax)
+ 80480c4:	1c 00                	sbb    $0x0,%al
+ 80480c6:	00 00                	add    %al,(%eax)
+ 80480c8:	cc                   	int3   
+ 80480c9:	ff                   	(bad)  
+ 80480ca:	ff                   	(bad)  
+ 80480cb:	ff 14 00             	call   *(%eax,%eax,1)
+ 80480ce:	00 00                	add    %al,(%eax)
+ 80480d0:	00 41 0e             	add    %al,0xe(%ecx)
+ 80480d3:	08 85 02 42 0d 05    	or     %al,0x50d4202(%ebp)
+ 80480d9:	50                   	push   %eax
+ 80480da:	c5 0c 04             	lds    (%esp,%eax,1),%ecx
+ 80480dd:	04 00                	add    $0x0,%al
+	...
+
+Disassembly of section .data:
+
+080490e0 <n>:
+ 80490e0:	10 27                	adc    %ah,(%edi)
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	47                   	inc    %edi
+   1:	43                   	inc    %ebx
+   2:	43                   	inc    %ebx
+   3:	3a 20                	cmp    (%eax),%ah
+   5:	28 55 62             	sub    %dl,0x62(%ebp)
+   8:	75 6e                	jne    78 <main-0x804801c>
+   a:	74 75                	je     81 <main-0x8048013>
+   c:	20 35 2e 34 2e 30    	and    %dh,0x302e342e
+  12:	2d 36 75 62 75       	sub    $0x75627536,%eax
+  17:	6e                   	outsb  %ds:(%esi),(%dx)
+  18:	74 75                	je     8f <main-0x8048005>
+  1a:	31 7e 31             	xor    %edi,0x31(%esi)
+  1d:	36 2e 30 34 2e       	ss xor %dh,%cs:(%esi,%ebp,1)
+  22:	31 32                	xor    %esi,(%edx)
+  24:	29 20                	sub    %esp,(%eax)
+  26:	35 2e 34 2e 30       	xor    $0x302e342e,%eax
+  2b:	20 32                	and    %dh,(%edx)
+  2d:	30 31                	xor    %dh,(%ecx)
+  2f:	36 30 36             	xor    %dh,%ss:(%esi)
+  32:	30 39                	xor    %bh,(%ecx)
+	...
