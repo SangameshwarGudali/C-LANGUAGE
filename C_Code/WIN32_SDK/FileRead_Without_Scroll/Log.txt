@@ -1,0 +1,2 @@
+WinMain:p_cs->lpCreateParams = file_reader.c
+PathName= ¾\n

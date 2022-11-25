@@ -1,0 +1,112 @@
+void -> keyword in C Programming Language. 
+Original Purpose: There are some places esp in 
+function declaration and definition where 
+grammatically type annotation syntax is expected 
+
+BUT 
+
+there is no appropriate type to write! 
+
+e.g. 
+function returning nothing 
+
+According to grammer, 
+function name should be prefixed by type of the 
+return value 
+
+But if there is nothing to return then we cannot 
+leave that place empty. 
+
+The keyword void fulfills both needs. 
+
+At one end, it serves as return type annotation 
+grammatically. 
+
+On the other, as name suggests, its a data type 
+signifying no data (= which matches with your logic
+requirement)
+#----------------------------------------------------- 
+
+We cannot create an instance of data type void. 
+
+void x;     // compile time error 
+            //  why? The compiler wouldn't know 
+            //  how many bytes to allocate! 
+malloc(sizeof(void)); -> invalid 
+#------------------------------------------------------
+
+You are allowed to create pointer to void. 
+
+void* p; 
+
+Why is it possible to create a pointer to void, 
+when instance of void is forbidden? 
+
+Instance of void is chiefly forbidden because compiler is 
+unaware of the size of data of type void (as void signifies 
+absence of all)
+
+But pointer to any data type fits within 8 bytes, and therefore, 
+pointer to any data type real / pseudo(read void), can always be 
+defined 
+
+void* p;    // 8 bytes! 
+
+As it is not possible to create an instance of type void, 
+the p (which is pointer to void) cannot certainly be used 
+for storing addresses of such instances.
+
+Then what is the interpretation of pointer to void. 
+
+It signifies that the pointer can store address of ANY DATA TYPE 
+OR ADDRESS WHICH DOES NOT HAVE ANY TYPE ASSOCIATED WITH IT ! 
+
+How is this achieved. 
+
+T* to void* implicit type casting is always legal 
+
+LHS -> pointer to void 
+RHS -> T* where T is any defined type 
+
+p = RHS; is valid from type-checking pespective 
+
+More concretely, 
+
+char c; 
+int n; 
+float f; 
+struct A {int a[5]; double d[7]; } inA; 
+
+void* p; 
+
+p = &c; // ok char* -> void* 
+p = &n; // ok int* -> void* 
+p = &f; // ok float* -> void* 
+p = &inA; // ok struct A* -> void* 
+
+p = (void*)&c; 
+p = (void*)&n; 
+p = (void*)&f; 
+p = (void*)&inA; 
+
+Pointer to void cannot be dereferenced! 
+Why? 
+
+void* p; 
+
+typeof(p) = void* 
+typeof(*p) = void 
+
+expression of type void cannot be read from or written to 
+therefore, 
+*p is an INVALID EXPRESSION! 
+
+What is the use of it? 
+
+#-----------------------------------------------------------
+
+PRINCIPLE: 
+WE MUST TYPECAST POINTER TO VOID TO appropriate TYPE BEFORE 
+IT CAN BE DE-REFERENCED! 
+
+

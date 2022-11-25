@@ -1,0 +1,5 @@
+Stack and Queue are not data structures in a way 
+that we have defined data structure. 
+
+Adaptor 
+

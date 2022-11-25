@@ -1,0 +1,41 @@
+#pragma comment(lib, "user32.lib") # exaplanation 
+
+# cl MessageBoxDemo.c [user32.lib] --> will not be required! 
+
+Question: Why is it required in the first place? 
+
+Answer: 
+
+In C source code, we call many functions whose 
+definitions are not written by us. 
+
+To make such calls work, we must include the header 
+file containing the declarations of such functions so 
+that the compiler can find declarations before call. 
+
+Eventually, the definitions must also be supplied to 
+the linker. The definitions are present in binary files 
+known as libraries. 
+
+Libraries come in two flavours 
+1) static link library 
+2) dynamic link library 
+
+static link library can be linked with application 
+at the time of compilation 
+
+dynamic link library can be loaded into running process! 
+
+If xyz is a name of library then 
+
+static link library gets extension '.lib'
+and xyz.lib is the full name of the static link library 
+
+If xyz is a dyanamic link library then its extension in 
+.dll. Therefore the full name of library is xyz.dll 
+
+#-----------------------------------------------------------------
+
+Under windows Operating system, every DLL file has a corrossponding 
+IMPORT LIBRARY. 
+

@@ -1,0 +1,136 @@
+1)  Linux (Unix Philosophy)
+    while concatenating two english words in a single variable name, 
+    an underscore is used as a separator. 
+
+    GLOBAL VARIABLES: 
+        No defined convention. 
+        except one: If variables is a concatenation of two 
+        english words, use _ as separator 
+
+        Optional convention: 
+        While defining global data some companies use prefix g_ 
+        int g_num; 
+        char g_char; 
+        float g_interest_rate; 
+
+    LOCAL VARIALBES: 
+        No defined convention. 
+        except one: If variables is a concatenation of two 
+        english words, use _ as separator 
+
+        typically local variables are defined as 
+        int i; 
+        int j; 
+        int k; 
+        int arr; 
+        etc. 
+
+        If any data has more than two english words then 
+        use _ as separator. 
+
+    Function Name: 
+        If funciton name is a single english words then 
+        all characters must be short. 
+
+        If function name comprises of multiple english words 
+        then use _ as separator. 
+
+        void* malloc(size_t); 
+        int printf(const char*, ...); 
+        int scanf(const char*, ...); 
+
+        void sort_array(int* p_arr, size_t size); 
+
+    Type Name: 
+        No defined convention. 
+        If type name is one english word then 
+        all letters must be small 
+
+        If type name is comprised of two or more english 
+        words keep all letters small & use _ as separator. 
+
+2) Camel 
+
+3) Hungarian Notation: 
+    Charles Simoni -> Hungarian Developer 
+    Hungarian Notation 
+
+    GLOBAL VARIABLE / LOCAL VARIABLE 
+
+    <data_type_prefix>VariableName 
+
+    If variable name consists of multiple English words 
+    then it must written title case. (Starting of the word 
+    should be capital letter)
+    
+    core_programming_academy -> Linux 
+    tuiCoreProgrammingAcademy -> Windows 
+    coreProgrammingAcademy -> Camel 
+
+    int num; // Linux 
+    int iNum; // Hungarian 
+
+    int nr_elements; // Linux 
+    int iNumberOfElements; 
+
+    unsigned int size_of_block; // Linux 
+    UINT uSizeOfBlock;  // WINDOWS
+
+    float interest_rate; // linux 
+    FLOAT fRateOfInterst; //WINDOWS 
+
+    double my_attendance;   // LINUX 
+    DOUBLE dblMyAttendance; // Hungarian 
+
+    char                    ->  CHAR    cAns; 
+    unsigned char           ->  BYTE    bCnt; 
+    short                   ->  SHORT   sNum; 
+    unsigned short          ->  WORD    wParam; 
+    int                     ->  INT     iCnt; 
+    unsigned int            ->  DWORD   dwExitCode; 
+    long int                ->  LONG    iLargeNumber; 
+    unsigned long int       ->  ULONG   dwPositiveLargeNmber; 
+    long long int           ->  LONG LONG   qLargeInteger
+    unsigned long long int  ->  ULONGLONG   qwVeryLargePositiveInteger 
+    char*           -> LPSTR    lp 
+    const char*     -> LPCSTR   lpc 
+    wchar_t         -> WCHAR 
+    wchar_t*        -> LPWSTR   lp 
+    const wchar_t*  -> LPCWSTR  lpcw 
+
+    lpsz -> long ponter to zero terminated string 
+
+    LPSTR lpszMyName; 
+
+    char*   ->  PCHAR; 
+    BYTE*   ->  PBYTE 
+    SHORT*  ->  PSHORT 
+    WORD*   ->  PWORD 
+    INT*    ->  PINT 
+    DOWRD*  ->  PDWORD 
+    LONG*   ->  PLONG 
+    ULONG*  ->  PULONG 
+    LONG LONG* -> PLONGLONG 
+    ULONGLONG*  -> PULONGLONG 
+    FLOAT*      -> PFLOAT 
+
+    STRUCTURE NAME 
+
+    STRUCTURE TYPE NAME -> FULL CAPS 
+    STRUCTURE VARIALBE NAME -> FULL LOW CHARS (usually first char 
+    of every english word in struct name (in small letters))
+
+    PAINTSTRUCT ps; 
+    DATE d; 
+
+    TEXTMETRICS tm; 
+
+typedef char CHAR; 
+typedef CHAR* PCHAR; 
+typedef CHAR* LPSTR; 
+#define CONST const 
+typedef CONST CHAR* LPCSTR; 
+
+Function -> Completely Title 
+
+CoreProgrammingAcademy()

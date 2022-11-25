@@ -1,0 +1,239 @@
+CPA PRINCIPLE: 
+    In Typed Programming Languages, the semantics of 
+    operator are evaluated in the context of types 
+    of its operands. 
+-------------------------------------------------------
+
+[1] Arithmetic and logic operators 
+
+    int x, y, z; 
+    z = x + y;     
+
+    Assembly translation 
+    movl    x, %eax 
+    movl    y, %edx 
+    addl    %edx, %eax 
+    movl    %eax, z 
+
+    short int x,y,z; 
+
+    Assembly Translation 
+    movw    x, %ax 
+    movw    y, %dx 
+    addw    %dx, %ax 
+    movw    %ax, z 
+
+    unsigned char x, y, z; 
+    z = x + y; 
+
+    Assembly Translation
+    movb    x, %al 
+    movb    y, %dl 
+    addb    %dl, %al 
+    movb    %al, z 
+
+#-----------------------------------------------
+
+    int x, y; 
+    unsigned int p, q; 
+
+    if(x > y)
+    {
+
+    }
+    else 
+    {
+
+    }
+
+    Assembly Translation: 
+
+    movl    x, %eax 
+    movl    y, %edx 
+    cmpl    %edx, %eax
+    jng     else 
+    IF BLOCK TRANSLATION 
+    jmp     out 
+else: 
+    ELSE BLOCK TRANSLATION     
+
+out: 
+#--------------------------------------
+    if(p > q)
+    {
+
+    }
+    else 
+    {
+
+    }
+
+    movl    p, %eax 
+    movl    q, %edx 
+    cmpl    %edx, %eax 
+    jna     out 
+    IF BLOCK TRANSLATION 
+    jmp     out 
+else: 
+    ELSE BLOCK TRANSLATION     
+
+out: 
+
+        SIGNED          UNSIGNED 
+<       jl  == jnge     jb  == jnae 
+<=      jle == jng      jbe == jna 
+>       jg  == jnle     ja  == jnbe 
+>=      jge == jnl      jae == jnb 
+==      je              jz 
+!=      jne             jnz 
+
+x,y -> signed integer 
+
+x < y, x <= y, x > y, x > y, x == y, x != y (SIGNED)
+
+x, y -> unsigned int 
+x < y, x <= y, x > y, x > y, x == y, x != y (UNSIGNED)
+#----------------------------------------------------------
+[1] Assignment operator: 
+
+Operation: Assignment operator performs read / write operations 
+on its operands 
+
+examples! 
+
+char c1 = 'A'; 
+char c2 = 'Z'; 
+c1 = c2;    // read from c2, write on c1 
+------------
+int n1, n2; 
+n2 = n1;    // read from n1, and write on n2 
+-------------
+unsigned long long int ln1, ln2; 
+ln1 = ln2;  // read from ln2 and write on ln1 
+----------------
+
+How does assignment operator work in the context of type? 
+How many bytes to read from the base address of RHS 
+How many butes to write from the base address of LHS 
+
+is DECIDED in the context of type of operands. 
+
+c1 = c2;    // read from one byte whose name is c2 
+            // write to one byte whose name is c1 
+
+n1 = n2;    //  read 4 bytes from the base address of n2 
+            // write to 4 bytes from the base address of n1 
+
+ln1 = ln2;  // read 8 bytes from the base address of ln2 
+            // write to 8 bytes from the base address of ln1 
+#---------------------------------------------------------------
+short int s1; 
+int n1; 
+long long int n2; 
+
+[0000 0000 ][0000 1010]
+s1 = 10; 
+n1 = 10; 
+n2 = 10; 
+s1=10; 
+Because LHS is short 
+10 is 
+0000 0000 0000 1010 
+#-----------------------------
+n1 = 10; 
+0000 0000   0000 0000   0000 0000   0000 1010
+#-----------------------------
+n2 = 10; 
+0000 0000   0000 0000   0000 0000   0000 0000   0000 0000   0000 0000   0000 0000   0000 1010
+#-----------------------------
+[2] Pointer arithmetic in the context of types of its operands 
+    char* p1 = 1000; 
+    short* p2 = 1000; 
+    int* p3 = 1000; 
+    double* p4 = 1000; 
+    struct Date { int day; int month; int year}; 
+    struct Date* p5 = 1000; 
+    p1 + 1 == 1001 
+    p2 + 1 == 1002 
+    p3 + 1 == 1004 
+    p4 + 1 == 1008 
+    p5 + 1 == 1012 
+
+    p1 - 1 == 999 
+    p2 - 1 == 998 
+    p3 - 1 == 996 
+    p4 - 1 == 992 
+    p5 - 1 == 988 
+
+    p + k = address in p + k * sizeof(typeof(*p))
+    p - k = address in p - k * sizeof(typeof(*p))
+#-------------------------------------------------
+[3] Dereference operator on built-int data types 
+    on in the context of type 
+
+    char* p1 = 1000; 
+    short* p2 = 1000; 
+    int* p3 = 1000; 
+    double* p4 = 1000; 
+
+    char c1; 
+    short s2; 
+    int n3; 
+    double d4; 
+
+    c1 = *p1;   //  read 1 byte whose address stored in p1 
+    s2 = *p2;   //  read 2 bytes from address stored in p2 
+    n3 = *p3;   //  read 4 bytes from address stored in p3 
+    d4 = *p4;   //  read 8 bytes from address stored in p4 
+#-----------------------------------------------------------
+    *p1 = c1;   //  write to 1 byte whose address is stored in p1 
+    *p2 = s2;   //  write to 2 bytes from address stored in p2  
+    *p3 = n3;   //  write to 4 bytes from address stored in p3 
+    *p4 = d4;   //  write to 8 bytes from address stored in p4 
+#--------------------------------------------------------------
+[] operator: 
+#-----------------------------------------------------------
+char c_arr[5]; 
+short s_arr[5]; 
+int i_arr[5]; 
+double d_arr[5]; 
+#-----------------------------------------------------------
+arr[i] = base address of array + i * sizeof(typeof(array element)) 
+#-----------------------------------------------------------
+&c_arr[i]   = base address of c_arr + i * sizeof(char) 
+            = base address of c_arr + i * 1 
+            = base address of c_arr + i 
+#---------------------------------------------------------
+&s_arr[i]   =   base address of s_arr + i * sizeof(short)
+            =   base address of s_arr + i * 2 
+#----------------------------------------------------------
+&iarr[i]    =   base address of i_arr + i * sizeof(int)
+            =   base address of i_arr + i * 4 
+#----------------------------------------------------------
+&d_arr[i]   =   base address of d_arr + i * sizeof(double) 
+            =   base address of d_arr + i * 8 
+#-----------------------------------------------------------
+
+struct A 
+{
+    int a; 
+    char b; 
+    int c; 
+}; 
+
+struct B
+{
+    int a[5]; 
+    float f[3]; 
+    int x; 
+    int y; 
+    int c; 
+    int z; 
+}; 
+
+struct A inA; 
+struct B inB; 
+
+&inA.c = Base address of structure instance inA + offset of member c in struct A ( = 8)
+
+&inB.c = Base address of struct instance inB + offset of member c in struct B ( = 40)

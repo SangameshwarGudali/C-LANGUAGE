@@ -1,0 +1,61 @@
+Requirement
+
+1)  To fetch the first number in list without removing it from list 
+    Name: get_start 
+    Param 1: the list : struct node* p_list 
+    Param 2: Address of data element: int* p_beg_data 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list is empty 
+
+2)  To fetch the last number in list without removing it from list 
+    Name: get_end 
+    Param 1: the list: struct node* p_list 
+    Param 2: the address of data element: int* p_end_data 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list empty 
+
+3)  To remove and return the first number in the list 
+    Name: pop_start 
+    Param 1: the list : struct node* p_list 
+    Param 2: Address of data element: int* p_beg_data 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list is empty 
+
+4)  To remove and return the last number in the list 
+    Name: pop_end 
+    Param 1: the list: struct node* p_list 
+    Param 2: the address of data element: int* p_end_data 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list empty 
+
+5)  To remove the first element in the list 
+    Name: remove_start
+    Param 1: the list: struct node* p_list 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list empty 
+
+6)  To remove the last element in the list 
+    Name: remove_end 
+    Param 1: the list: struct node* p_list 
+    Return: Status: SUCCESS if the list is not empty 
+            LIST_EMPTY error if the list empty 
+
+7)  To remove the first occurrence of a given number from the list
+    Name: remove_data 
+    Param 1: the list: struct node* p_list 
+    Param 2: value of data: int r_data 
+    Return: Status: SUCCESS if r_data is present in list and is removed 
+                    LIST_DATA_NOT_FOUND error if r_data is absent from list 
+
+8)  To query whether list is empty 
+    Name: is_list_empty 
+    Param 1: the list: struct node* p_list 
+    Return: Status: TRUE-> if the list is empty 
+                    FALSE-> if the list is not empty 
+
+9)  To query whether given element is a part of list or not. 
+    Name: find_data
+    Param 1: the list: struct node* p_list 
+    Param 2: find data: int f_data 
+    Return : Status:    TRUE if f_data is present in list 
+                        FALSE otherwise.  

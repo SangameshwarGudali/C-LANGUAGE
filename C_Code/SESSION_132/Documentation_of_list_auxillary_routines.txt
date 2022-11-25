@@ -1,0 +1,19 @@
+void generic_insert(node_t* p_beg, node_t* p_mid, node_t* p_end); 
+Precondition:   p_beg->next == p_end 
+                p_end->prev == p_beg 
+                p_mid is a newly allocated node 
+
+Goal: to insert node pointed by p_mid between nodes 
+    pointed by p_beg and p_end resp. 
+
+
+void generic_delete(node_t* p_delete_node); 
+Precondition: 
+    p_delete_node points to a non-DUMMY (non head node)
+    in some list 
+Postcondition: 
+    Node pointed p_delete_node is no longer a part of list 
+    but remaining nodes are chained in linked list 
+
+node_t* search_node(list_t* p_list, data_t s_data); 
+node_t* get_node(data_t new_data); 

@@ -1,0 +1,66 @@
+Calling convention theory: 
+
+[1] Formal parameters of function + non-static local variables of function = LOCAL STATE OF FUNCTION 
+
+[2] LOCAL state of function is created when a function is called and is destroyed when function returns 
+
+[3] Therefore, the LOCAL state is allocated and de-allocated dynamically. 
+
+**[4] Anything that is allocated dynamically DOES NOT HAVE NAME IN ASSEMBLY LANGUAGE. 
+
+[5] Also, the local state of a function is managed by two parties 
+    (i)     The caller 
+    (ii)    The callee 
+
+**[6] Because, local variables and parameters of function CANNOT BE LOCATED BY NAMES 
+    at ASSEMBLY LANGUAGE LEVEL AND MACHINE LANGUAGE LEVEL, 
+    it is ESSENTIAL TO MAKE AN ARRANGEMENT SO THAT THE PARAMETERS SENT BY THE CALLER 
+    REMAIN ACCESSIBLE TO CALLEE AND ALSO TO ENSURE THAT THE ALLOCATION AND DE-ALLOCATION 
+    OF THE LOCAL STATE HAPPENS IN ORDERLY FASHION. (EVEN IN CASE OF NESTED FUNCTION)
+
+[7] This is arrangement takes a form of a CONTRACT between the caller and the callee 
+    wherein both the caller and the callee undertake specific responsibilities and 
+    get functionality from the other. 
+
+[8] This contract is known as THE CALLING CONVENTION. 
+    The Function call made by caller 
+    and the function definition written by callee 
+    CAN BE TRANSLATED IN ASSEMBLY ONLY ASSUMING CERTAIN CALLING CONVENTION BETWEEN THE TWO. 
+
+[9] Each compiler identifies a known calling convention by assigning it a compiler specific keyword. 
+    This calling convention name (compiler specific keyword) MUST BE PLACED BETWEEN RETURN TYPE 
+    AND FUNCTION NAME WHILE DECLARING AND DEFINITING FUNCTION! 
+
+
+    return_type calling_convention_name function_name(formal parameter list);  // decl 
+
+    return_type calling_convention_name function_name(formal parameter list)
+    {
+
+    }
+
+    header 
+    double <CC_NAME> cpaSin(double angle); 
+
+    double <CC_NAME> cpaSin(double angle)
+    {
+
+    }
+
+[10] We have not mentioned calling convention in our coding so far. 
+    Then how source codes got compiled? 
+    Because every compiler has a default calling convention. 
+    And if the calling convention is NOT MENTIONED then 
+    both function call and the definition are compiled by the compiler's 
+    default calling convention. 
+
+    Microsoft compiler: cl.exe: default calling convention: PASCAL CALLING convention 
+    compiler specific keyword: __stdcall 
+
+    GNU C compiler: 32 bit machine: default calling convention: C Calling convention 
+    compiler specific keyword: __attribute__((cdecl))
+
+    GNU C compiler 64 bit machine: Default calling convention: FASTCALL 
+    compiler specific keyword: __attribute__((regparm((6)))
+
+

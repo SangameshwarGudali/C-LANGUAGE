@@ -7,18 +7,19 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+void AddMenus(HWND hWnd);
+HMENU hMenu;
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
-    static TCHAR szClassName[] = TEXT("SHIV-SAN APP");
-    static TCHAR szWindowName[] = TEXT("MY WINDOW"); 
 
     HWND hWnd = NULL;
     HBRUSH hBrush = NULL;
     HICON hIcon = NULL;
-    HICON hIconSm = NULL;
+    HICON hIconSm = NULL; 
     HCURSOR hCursor = NULL;
 
-    WNDCLASSEX wndEx;
+    WNDCLASSEX wndEx = {0};
     MSG msg;
 
     ZeroMemory(&wndEx, sizeof(WNDCLASSEX));
@@ -44,21 +45,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wndEx.hIconSm = hIconSm;
     wndEx.hCursor = hCursor;
     wndEx.lpfnWndProc = WndProc;
-    wndEx.lpszClassName = szClassName;
+    wndEx.lpszClassName = "SHIV-SAN APP";
     wndEx.lpszMenuName = NULL;
     wndEx.style = CS_HREDRAW | CS_VREDRAW;
 
-    ATOM bRet = RegisterClassEx(&wndEx);
-    assert(bRet != NULL);
-
-    hWnd = CreateWindowEx(WS_EX_APPWINDOW, szClassName, szWindowName,
+    if(RegisterClassEx(&wndEx));
+        return(-1);
+    CreateWindowW(L"SHIV-SAN APP", L"MY WINDOW",
                         WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
                         CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-                        NULL, NULL, hInstance, NULL);
-    assert(hWnd);
+                        NULL, NULL, NULL, NULL);
 
-    ShowWindow(hWnd, nShowCmd);
-    UpdateWindow(hWnd);
+    
 
     while(GetMessage(&msg, NULL, 0, 0))
     {
@@ -72,9 +70,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg)
     {
+        case WM_CREATE:
+            AddMenus(hWnd);
         case WM_DESTROY:
             PostQuitMessage(0);
             break;
     }
     return(DefWindowProc(hWnd, uMsg, wParam, lParam));
 }
+

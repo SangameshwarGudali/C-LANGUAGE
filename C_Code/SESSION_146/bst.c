@@ -1,0 +1,538 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+
+#define SUCCESS 1 
+#define TRUE 1 
+#define FALSE 0 
+
+#define BST_EMPTY 2 
+#define BST_DATA_NOT_FOUND 3 
+#define BST_NO_INORDER_SUCCESSOR 4 
+#define BST_NO_INORDER_PREDECESSOR 5 
+
+struct bst_node
+{
+    int key; 
+    struct bst_node* left; 
+    struct bst_node* right; 
+    struct bst_node* parent; 
+}; 
+
+struct bst 
+{
+    struct bst_node* p_root_node; 
+    unsigned long long int nr_elements; 
+}; 
+
+struct bst* bst_create(void); 
+int bst_insert(struct bst* p_bst, int new_key); 
+
+void preorder(struct bst* p_bst); 
+void inorder(struct bst* p_bst); 
+void postorder(struct bst* p_bst); 
+int bst_search(struct bst* p_bst, int search_key); 
+
+int bst_max(struct bst* p_bst, int* p_max); 
+int bst_min(struct bst* p_bst, int* p_min); 
+
+int bst_successor(struct bst* p_bst, int e_data, int* p_succ_data); 
+int bst_predecessor(struct bst* p_bst, int e_data, int* p_pred_data); 
+int bst_remove(struct bst* p_bst, int r_data); 
+int bst_remove_using_transplant(struct bst* p_bst, int r_data); 
+
+void bst_destroy(struct bst* p_bst); 
+
+void preorder_nodelevel(struct bst_node* p_root); 
+void inorder_nodelevel(struct bst_node* p_root); 
+void postorder_nodelevel(struct bst_node* p_root); 
+void bst_destroy_nodelevel(struct bst_node* p_root); 
+
+struct bst_node* bst_max_node(struct bst_node* p_root); 
+struct bst_node* bst_min_node(struct bst_node* p_root); 
+struct bst_node* bst_successor_node(struct bst_node* p_node); 
+struct bst_node* bst_predecessor_node(struct bst_node* p_node); 
+struct bst_node* bst_search_nodelevel(struct bst_node* p_root, 
+                                        int search_key); 
+void bst_transplant(struct bst* p_bst, struct bst_node* u, struct bst_node* v); 
+struct bst_node* get_bst_node(int key); 
+
+/* Client that uses BST */ 
+int main(void)
+{
+    struct bst* p_bst = NULL; 
+    int keys[] = {100, 50, 150, 25, 75, 200, 
+                    20, 70, 80, 175, 250, 24}; 
+    int ne_keys[] = {-345, 4573, 346, -6535, 4746, 735, -634}; 
+    int i, status; 
+
+    p_bst = bst_create(); 
+    for(i = 0; i < sizeof(keys)/sizeof(int); ++i)
+        assert(bst_insert(p_bst, keys[i]) == SUCCESS); 
+
+    preorder(p_bst); 
+    inorder(p_bst); 
+    postorder(p_bst); 
+
+    puts("Test case for present keys"); 
+    for(i = 0; i < sizeof(keys)/sizeof(int); ++i)
+    {
+        status = bst_search(p_bst, keys[i]); 
+        if(status == TRUE)
+            printf("%d is present in given BST\n", keys[i]); 
+        else 
+        {
+            puts("Something went wrong"); 
+            bst_destroy(p_bst); 
+            p_bst = NULL; 
+            exit(EXIT_FAILURE); 
+        }
+    }
+
+    puts("Test case for absent keys"); 
+    for(i = 0; i < sizeof(ne_keys)/sizeof(int); ++i)
+    {
+        status = bst_search(p_bst, ne_keys[i]); 
+        if(status == FALSE)
+            printf("%d is not present in given BST\n", ne_keys[i]); 
+        else 
+        {
+            puts("Something went wrong"); 
+            bst_destroy(p_bst); 
+            p_bst = NULL; 
+            exit(EXIT_FAILURE); 
+        }
+    }
+
+    bst_destroy(p_bst); 
+    p_bst = NULL; 
+    puts("Tree destroyed successfully"); 
+    
+    return (EXIT_SUCCESS); 
+}
+
+/* Implementation of server routines */ 
+
+struct bst* bst_create(void)
+{
+    struct bst* p_bst = NULL; 
+
+    p_bst = (struct bst*)malloc(sizeof(struct bst)); 
+    if(NULL == p_bst)
+    {
+        printf("Memory allocation failed\n"); 
+        exit(EXIT_FAILURE); 
+    }
+
+    p_bst->p_root_node = NULL; 
+    p_bst->nr_elements = 0; 
+
+    return (p_bst); 
+}
+
+int bst_insert(struct bst* p_bst, int new_key)
+{
+    struct bst_node* p_new_node = NULL; 
+    struct bst_node* p_run = NULL; 
+
+    p_new_node = get_bst_node(new_key); 
+    p_run = p_bst->p_root_node; 
+    if(p_run == NULL)
+    {
+        p_bst->p_root_node = p_new_node; 
+        p_bst->nr_elements += 1; 
+        return (SUCCESS); 
+    }
+
+    while(1)
+    {
+        if(new_key <= p_run->key)
+        {
+            if(p_run->left == NULL)
+            {
+                p_run->left = p_new_node; 
+                p_new_node->parent = p_run; 
+                break; 
+            }
+            else 
+                p_run = p_run->left; 
+        }
+        else 
+        {
+            if(p_run->right == NULL)
+            {
+                p_run->right = p_new_node; 
+                p_new_node->parent = p_run; 
+                break; 
+            }
+            else 
+                p_run = p_run->right; 
+        }
+    }
+    
+    p_bst->nr_elements += 1; 
+    return (SUCCESS); 
+}
+
+int bst_max(struct bst* p_bst, int* p_max)
+{
+    struct bst_node* p_max_node = NULL; 
+
+    if(p_bst->p_root_node == NULL)
+        return (BST_EMPTY); 
+    
+    p_max_node = bst_max_node(p_bst->p_root_node); 
+    *p_max = p_max_node->key; 
+
+    return (SUCCESS); 
+
+}
+int bst_min(struct bst* p_bst, int* p_min)
+{
+    struct bst_node* p_min_node = NULL; 
+
+    if(p_bst->p_root_node == NULL)
+        return (BST_EMPTY); 
+    
+    p_min_node = bst_min_node(p_bst->p_root_node); 
+    *p_min = p_min_node->key; 
+
+    return (SUCCESS);    
+}
+
+int bst_successor(struct bst* p_bst, int e_data, int* p_succ_data)
+{
+    struct bst_node* p_ext_node = NULL, *p_succ_node = NULL; 
+
+    p_ext_node = bst_search_nodelevel(p_bst->p_root_node, e_data); 
+    if(p_ext_node == NULL)
+        return (BST_DATA_NOT_FOUND); 
+    
+    p_succ_node = bst_successor_node(p_ext_node); 
+    if(p_succ_node == NULL)
+        return (BST_NO_INORDER_SUCCESSOR); 
+
+    *p_succ_data = p_succ_node->key; 
+    return (SUCCESS); 
+}
+
+int bst_predecessor(struct bst* p_bst, int e_data, int* p_pred_data)
+{
+    struct bst_node* p_ext_node = NULL, *p_pred_node = NULL; 
+
+    p_ext_node = bst_search_nodelevel(p_bst->p_root_node, e_data); 
+    if(p_ext_node == NULL)
+        return (BST_DATA_NOT_FOUND); 
+    
+    p_pred_node = bst_predcessor_node(p_ext_node); 
+    if(p_pred_node == NULL)
+        return (BST_NO_INORDER_PREDECESSOR); 
+
+    *p_pred_data = p_pred_node->key; 
+    return (SUCCESS); 
+}
+
+int bst_remove(struct bst* p_bst, int r_key)
+{
+    struct bst_node* z = NULL; /* node to be deleted */ 
+    struct bst_node* w = NULL; /* successor of node to be deleted i.e. z */ 
+
+    z = bst_search_nodelevel(p_bst->p_root_node, r_key); 
+    if(z == NULL)
+        return (BST_DATA_NOT_FOUND); 
+
+    if(z->left == NULL)
+    {
+        if(z->parent == NULL)
+            p_bst->p_root_node = z->right; 
+        else if(z == z->parent->left)
+            z->parent->left = z->right; 
+        else 
+            z->parent->right = z->right; 
+
+        if(z->right != NULL)
+            z->right->parent = z->parent; 
+    }
+    else if(z->right == NULL)
+    {
+        if(z->parent == NULL)
+            p_bst->p_root_node = z->left; 
+        else if(z == z->parent->left)
+            z->parent->left = z->left; 
+        else 
+            z->parent->right = z->left; 
+
+        z->left->parent = z->parent; 
+    }   
+    else
+    {
+        w = z->right; 
+        while(w->left != NULL)
+            w = w->left; 
+
+        if(w != z->right)
+        {
+            w->parent->left = w->right; 
+            if(w->right != NULL)
+                w->right->parent = w->parent; 
+
+            w->right = z->right; 
+            w->right->parent = w; 
+        }
+
+        if(z->parent == NULL)
+            p_bst->p_root_node = w; 
+        else if(z == z->parent->left) 
+            z->parent->left = w; 
+        else 
+            z->parent->right = w; 
+
+        w->parent = z->parent; 
+
+        w->left = z->left; 
+        w->left->parent = w; 
+    }
+
+    free(z); 
+    z = NULL; 
+
+    return (SUCCESS); 
+}
+
+int bst_remove_using_transplant(struct bst* p_bst, int r_key)
+{
+    struct bst_node* z = NULL; /* node to be deleted */ 
+    struct bst_node* w = NULL; /* successor of node to be deleted i.e. z */ 
+
+    z = bst_search_nodelevel(p_bst->p_root_node, r_key); 
+    if(z == NULL)
+        return (BST_DATA_NOT_FOUND); 
+
+    if(z->left == NULL)    
+        bst_transplant(p_bst, z, z->right); 
+    else if(z->right == NULL)
+        bst_transplant(p_bst, z, z->left);    
+    else
+    {
+        w = z->right; 
+        while(w->left != NULL)
+            w = w->left; 
+
+        if(w != z->right)
+        {
+            bst_transplant(p_bst, w, w->right); 
+            w->right = z->right; 
+            w->right->parent = w; 
+        }
+
+        bst_transplant(p_bst, z, w); 
+        w->left = z->left; 
+        w->left->parent = w; 
+    }
+
+    free(z); 
+    z = NULL; 
+
+    return (SUCCESS);    
+}
+
+void bst_destroy(struct bst* p_bst)
+{
+    bst_destroy_nodelevel(p_bst->p_root_node); 
+}
+
+void preorder(struct bst* p_bst)
+{
+    puts("PREORDER:"); 
+    printf("[START]<->"); 
+    preorder_nodelevel(p_bst->p_root_node); 
+    printf("[END]\n"); 
+}
+
+void inorder(struct bst* p_bst)
+{
+    puts("INORDER:"); 
+    printf("[START]<->"); 
+    inorder_nodelevel(p_bst->p_root_node); 
+    printf("[END]\n"); 
+}
+
+void postorder(struct bst* p_bst)
+{
+    puts("POSTORDER:"); 
+    printf("[START]<->"); 
+    postorder_nodelevel(p_bst->p_root_node); 
+    printf("[END]\n"); 
+}
+
+int bst_search(struct bst* p_bst, int search_key)
+{
+    return (
+            bst_search_nodelevel(p_bst->p_root_node, 
+                                search_key) != NULL
+            ); 
+}
+
+void preorder_nodelevel(struct bst_node* p_root)
+{
+    if(p_root != NULL)
+    {
+        printf("[%d]<->", p_root->key); 
+        preorder_nodelevel(p_root->left); 
+        preorder_nodelevel(p_root->right); 
+    }
+}
+
+void inorder_nodelevel(struct bst_node* p_root)
+{
+    if(p_root != NULL)
+    {
+        inorder_nodelevel(p_root->left); 
+        printf("[%d]<->", p_root->key); 
+        inorder_nodelevel(p_root->right); 
+    }
+}
+
+void postorder_nodelevel(struct bst_node* p_root)
+{
+    if(p_root != NULL)
+    {
+        postorder_nodelevel(p_root->left); 
+        postorder_nodelevel(p_root->right); 
+        printf("[%d]<->", p_root->key); 
+    }
+}
+
+void bst_destroy_nodelevel(struct bst_node* p_root)
+{
+    if(p_root != NULL)
+    {
+        bst_destroy_nodelevel(p_root->left); 
+        bst_destroy_nodelevel(p_root->right); 
+        free(p_root); 
+    }
+}
+
+struct bst_node* bst_search_nodelevel(struct bst_node* p_root, 
+                                        int search_key)
+{
+    struct bst_node* p_run = NULL; 
+
+    p_run = p_root; 
+    while(p_run != NULL)
+    {
+        if(p_run->key == search_key)
+            break; 
+        else if(search_key <= p_run->key)
+            p_run = p_run->left; 
+        else 
+            p_run = p_run->right; 
+    }
+
+    return (p_run); 
+}
+
+struct bst_node* bst_max_node(struct bst_node* p_root)
+{
+    struct bst_node* p_run = p_root; 
+    
+    while(p_run->right != NULL)
+        p_run = p_run->right; 
+
+    return (p_run); 
+}
+
+struct bst_node* bst_min_node(struct bst_node* p_root)
+{
+    struct bst_node* p_run = p_root; 
+    
+    while(p_run->left != NULL)
+        p_run = p_run->left; 
+
+    return (p_run); 
+}
+
+struct bst_node* bst_successor_node(struct bst_node* p_node)
+{
+    struct bst_node* x = NULL, *y = NULL, *p_run = NULL; 
+
+    /* Right subtree of node whose successor must be found is present */ 
+    if(p_node->right != NULL)
+    {
+        p_run = p_node->right; 
+        while(p_run->left != NULL)
+            p_run = p_run->left; 
+
+        return (p_run); 
+    }
+
+    /* Right subtree of node whose successor must be found is absent */ 
+    x = p_node; 
+    y = x->parent; 
+
+    while(y != NULL && y->right == x)
+    {
+        x = y; 
+        y = x->parent; 
+    }
+
+    return (y); 
+}
+
+struct bst_node* bst_predecessor_node(struct bst_node* p_node)
+{
+    struct bst_node* x = NULL, *y = NULL, *p_run = NULL; 
+
+    /* Left subtree of node whose predecessor must be found is not empty */ 
+    if(p_node->left != NULL)
+    {
+        p_run = p_node->left; 
+        while(p_run->right != NULL)
+            p_run = p_run->right; 
+
+        return (p_run); 
+    }
+
+    x = p_node; 
+    y = x->parent;
+
+    while(y != NULL && y->left == x)
+    {
+        x = y; 
+        y = x->parent; 
+    } 
+
+    return (y); 
+}
+
+void bst_transplant(struct bst* p_bst, struct bst_node* u, struct bst_node* v)
+{
+    if(u->parent == NULL)
+        p_bst->p_root_node = v; 
+    else if(u == u->parent->left)
+        u->parent->left = v; 
+    else    
+        u->parent->right = v; 
+    
+    if(v != NULL)
+        v->parent = u; 
+}
+
+struct bst_node* get_bst_node(int key)
+{
+    struct bst_node* p_new_bst_node = NULL; 
+
+    p_new_bst_node = (struct bst_node*)malloc(sizeof(struct bst_node)); 
+    if(p_new_bst_node == NULL)
+    {
+        printf("Memory allocation failed\n"); 
+        exit(EXIT_FAILURE); 
+    }
+
+    p_new_bst_node->key = key; 
+    p_new_bst_node->left = NULL; 
+    p_new_bst_node->right = NULL; 
+    p_new_bst_node->parent = NULL; 
+
+    return (p_new_bst_node); 
+}

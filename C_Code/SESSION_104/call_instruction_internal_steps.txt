@@ -1,0 +1,10 @@
+call    virtual addr (text section)
+
+1) calculate the addr of next instruction 
+    addr of next instruction    =   addr of current instruction + 
+                                    size of current instruction 
+                                =   eip + size of current instruction 
+2)  push the address of next instruction calculated in step 1 
+    on auto-storage section 
+
+3)  set eip to virtual addr (specified in operand of call instruction)

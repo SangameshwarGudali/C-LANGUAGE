@@ -3,6 +3,7 @@
 #include <assert.h>
 
 #define SUCCESS 1
+#define FAILURE 0
 
 struct bst_node
 {
@@ -30,15 +31,24 @@ void inorder(struct bst* p_bst);
 void inorder_nodelevel(struct bst_node* p_root_node);
 void postorder(struct bst* p_bst);
 void postorder_nodelevel(struct bst_node* p_root_node);
+void bst_destroy(struct bst* p_bst);
+void bst_destroy_nodelevel(struct bst_node* p_root);
+
+int bst_search(struct bst* p_bst, int search_key);
+struct bst_node* bst_search_nodelevel(struct bst_node* p_root, int search_key);
+
+
 
 
 int main(void)
 {
     int status;
     int i;
+    int ret;
     struct bst* p_bst = NULL;
 
     int keys[] = {100, 50, 150, 25, 75, 200, 20, 70, 80, 175, 250, 24};
+    int non_keys[] = {-541, -6, -45451, -564964, -164985, -1168489};
     p_bst = create_bst();
 
     for(i = 0; i < sizeof(keys)/sizeof(int); ++i)
@@ -46,9 +56,42 @@ int main(void)
         assert(insert_at_bst(p_bst, keys[i] ) == SUCCESS);
     }
 
+    puts("Test case for existing key element in keys[]");
+    for(i = 0; i < sizeof(keys)/sizeof(int); ++i)
+    {
+        ret = bst_search(p_bst, keys[i]);
+        if(ret == SUCCESS)        
+            printf("%d is avilable in BTree as keys[%d]\n", i, keys[i]);
+        else
+        {
+            printf("%d is NOT avilable in BTree as keys[%d]\n", i, keys[i]);
+            puts("something went wrong");
+            bst_destroy(p_bst);
+            p_bst = NULL;
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    puts("Test case for NON existing key element in keys[]");
+    for(i = 0; i < sizeof(non_keys)/sizeof(int); ++i)
+    {
+        ret = bst_search(p_bst, non_keys[i]);
+        if(ret == SUCCESS)        
+            printf("%d is NOT avilable in BTree as keys[%d]\n", i, non_keys[i]);
+        else
+        {
+            printf("%d is avilable in BTree as keys[%d]\n", i, non_keys[i]);
+            puts("something went wrong");
+            bst_destroy(p_bst);
+            p_bst = NULL;
+            exit(EXIT_FAILURE);
+        }
+    }
+
     preorder(p_bst);
     inorder(p_bst);
     postorder(p_bst);
+    bst_destroy(p_bst);
 
     return(p_bst);
 }
@@ -189,3 +232,43 @@ void postorder_nodelevel(struct bst_node* p_root_node)
     }
 }
 
+void bst_destroy(struct bst* p_bst)
+{
+    bst_destroy_nodelevel(p_bst->p_root_node);
+}
+
+void bst_destroy_nodelevel(struct bst_node* p_root)
+{
+    if(p_root != NULL)
+    {
+        bst_destroy_nodelevel(p_root->left);
+        bst_destroy_nodelevel(p_root->right);
+        free(p_root);
+    }
+}
+
+int bst_serach(struct bst* p_bst, int search_key)
+{
+    int ret;
+    ret = (bst_search_nodelevel(p_bst->p_root_node, search_key)!= NULL);
+    if(ret == SUCCESS);
+        return(SUCCESS);
+    retuern(FAILURE);
+}
+
+struct bst_node* bst_search_nodelevel(struct bst_node* p_root, int search_key)
+{
+    struct bst_node* p_run =  NULL;
+
+    p_run = p_root;
+    while(p_run != NULL)
+    {
+        if(p_run == p_root)
+            break;
+        else if(p_run <= p_root)
+            p_run = p_run->left;
+        else
+            p_run = p_run->right;
+    }
+    return(p_run);
+}

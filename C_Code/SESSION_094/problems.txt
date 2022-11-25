@@ -1,0 +1,81 @@
+P1: 
+char(*(*(*(*p)[5])(int, int))[3])(void); 
+
+p is a pointer 
+p is a pointer to array 5 
+p is a pointer to array 5 of pointers 
+p is a pointer to array 5 of pointer to function 
+p is a pointer to array 5 of pointer to function accepting int, int and returning pointer 
+p is a pointer to array 5 of pointer to function accepting int, int and returning 
+pointer to array 3 of 
+
+p is a pointer to array 5 of pointer to function acccepting int, int and returning 
+pointer to array 3 of pointer to 
+
+p is a pointer to array 5 of pointer to function accepting int, int and returning 
+pointer to array 3 of pointer to function accepting void returning char 
+
+P2: 
+int *(*(*x())[5])(int); 
+
+x is a function returning pointer to array 5 of pointer to function 
+accepting int and returning pointer to int 
+
+
+P3: 
+arr is array 5 of pointer to function returning 
+pointer to array 3 of pointer to function returning 
+pointer to array 5 of pointer to array 3 of char 
+
+P4: Write a function which returns pointer declared in P1 
+char(*(*(*(*p)[5])(int, int))[3])(void); 
+
+char (*(*(*(*test())[5])(int, int))[3])(void); 
+
+
+P5: Declare a pointer to function in P4 
+char (*(*(*(*(*pfn)())[5])(int, int))[3])(void); 
+//  JOKER:  It's not about money. It's about making a statement! 
+
+P6: Declare a pointer to (entity in P2)
+int *(*(*x())[5])(int); 
+
+int *(*(*(*pfn)())[5])(int); 
+
+
+P7: Declare a pointer to (entity in P3) 
+char (*(*(*(*(*(*p_arr)[5])(void))[3])(void))[5])[3]; 
+
+p8: Declare a const pointer to int 
+    int *const p = &n; 
+
+p9: Declare a pointer to const int 
+    const int *p; 
+
+p10: declare a const pointer to const int 
+    const int *const p = &n; 
+
+p11: Declare a const pointer to array 5 of int
+    int (*const p)[5] = &arr; 
+
+p12: Declare a pointer to array of const int 
+        const int (*p)[]; 
+
+p13: Declare a const pointer to array of const int  
+    const int (*const p)[] = &arr; 
+
+p14: Declare a const pointer to function accepting int 
+    returning int 
+    int (*const p)(int) = fun_name; 
+
+p15: Declare a const pointer to function accepting const int 
+    and returning pointer to const int 
+    
+    const int *(*const pfn)(const int) = fun_name; 
+
+
+p16: Declare a const pointer to function accepting const int 
+    and returning const pointer to array 5 of const int 
+
+    const int (*const (*const pfn)(const int))[5] = fun_name; 
+    // Just because we can! 

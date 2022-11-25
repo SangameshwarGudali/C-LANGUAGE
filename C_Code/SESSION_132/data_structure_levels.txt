@@ -1,0 +1,24 @@
+LEVELS
+
+1)  realloc() 
+        dynamically resizable array 
+
+2)  Linked data structure 
+        self referential structure 
+
+3)  Doubly circular list 
+        Major 
+
+4)  Binary search tree: remove() 
+
+5)  Graph adjecency list : general code 
+
+
+6)  RB Tree add (height balance tree, rotation)
+
+7)  B Tree / B+ Tree  
+#----------------------------------------------------------------
+8)  Fibonacci heap 
+
+
+

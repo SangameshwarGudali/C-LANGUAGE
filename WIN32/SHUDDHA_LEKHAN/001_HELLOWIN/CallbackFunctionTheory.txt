@@ -1,0 +1,42 @@
+[1] 
+As an application programmer we often call functions which are not defined by us. 
+Such functions are called as built-in functions. 
+
+There are three principle sources of built in functions 
+
+Source Number 1 -> Language Compiler 
+Source Number 2 -> External Librarires (standard + third party)
+Source Number 3 -> Operating System 
+[Built in sources]
+#-----------------------------------------------------------------------------------------------
+[2] Application calling functions from built-in sources is daily occurrence. 
+    If one of the entities from the built in sources calls function defined by the application 
+    is KNOWN as the CALLBACK function. 
+#-----------------------------------------------------------------------------------------------
+[3] In order to make a function callback, certain provisions must be made! 
+    (i)     Name / address of a callback function must be regsitered with built in source. 
+    (ii)    Header of callback function is partially / fully controlled by the built-in source. 
+            e.g. 
+            class Date 
+            {
+                Date(); 
+            }
+
+            //  constructor callback -> Name of the function is controlled by language 
+            //  Return type -> there is no return type 
+            //  formal paratmeters -> upto the programmer 
+
+            class MyInt
+            {
+                public: 
+                    MyInt& operator+(const MyInt&) {}
+            }; 
+
+            // Name, formal paremter list, return value -> everything is controlled by language 
+#--------------------------------------------------------------------------------------------------
+[4] Application almost always DOESN'T MAKE AN EXPLICIT CALL TO CALLBACK PROCEDURE. 
+    (In exceptional case, an application might have to do that)
+#--------------------------------------------------------------------------------------------------
+[5] When a built-in source makes a call to a call-back function? 
+    Upon the occurrence of some EVENT! 
+#--------------------------------------------------------------------------------------------------------

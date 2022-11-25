@@ -1,0 +1,161 @@
+[1] In one declaration ONLY ONE VARIALBE SHOULD GET DEFINED. 
+void (*signal(int, void(*)(int)))(int); 
+
+[2] Always start reading / constructing C declaration from variable name. 
+
+[3]	Find out primary type of variable name whose declaration you are reading or constructing 
+
+	which can be primary types 
+	(a)	Built in type  (e.g. char c; int n; float f; etc. )
+	(b) structure instance / union instance / enum  (struct node n, union stack S; enum Color c; )
+	
+	(c) Pointer to
+		int	*v;				(pointer to something in (a)) 
+		struct node	*v; 	(pointer to something in (b))
+		int(*v)[5]; 		(pointer to something in (d))
+		int (*v)(int, int); (pointer to something in (e))
+
+
+	(d) array: 				int arr[5]; 		
+
+	(e) function: 			int f(int, int); 
+	
+
+Declare an array of 
+Declare a function 
+Declare a pointer 
+
+	A[5] (array of function cannot be created)
+
+		A[5][3][]
+		**A[5]
+
+
+	f()	(function can cannot return a function or array)
+		(*f())[]
+		(*f())()
+		(**f())()
+	
+	*p 	
+	   (*p)[]
+	   		(*p)[][]
+	   		*(*p)[]
+	   	(*p)()
+	   		*(*p)()
+		**p
+			(**p)[]
+			(**p)()
+			(***p)
+#-------------------------------------------------------------
+(a) declare pointer to int 
+	
+	int *p; 
+
+(b) Declare a pointer to struct A. 
+
+	struct A *p; 
+
+(c) Declare a pointer to array of integer 
+
+	int (*p) [5]; 
+
+(d) Declare a pointer to a function accepting two integers and returning integer 
+
+	int (*p) (int, int); 
+
+(e) Declare a pointer to pointer to int. 
+	int **p; 
+
+#------------------------------------------------------------------------
+
+(f) Declare an array of pointer to function accepting integer and returning 
+	pointer to float. 
+	
+	float *(*v[])(int); 
+#-----------------------------------------------------------------
+(g) Declare a function 
+	accepting an 
+		integer and 
+	returning 
+		a pointer to array of pointer to function 
+												accepting integer 
+												and returning 
+													pointer to function 
+																	accepting int and 
+																	returning int 
+
+	int (* 	(* 	(* 		fun 	(int) 	)		[] )	(int) 	)	(int)										
+	int (*(*(*fun(int))[])(int))(int); 
+
+#----------------------------------------------------------------------------------
+# UNREAL DECLARATION 
+
+Declare a pointer to array 5 of pointer to function 
+	accepting (a) int
+			  (b) pointer to function accepting 
+			  						pointer to function taking int 
+			  											returning void 
+			  						returning pointer to array 3 of pointer to function 
+			  																accepting int 
+			  																returning void 
+	returning 
+			pointer to function accepting float 
+								returning pointer to array 4 of pointer to array 6 of pointer to function 
+																							accepting int 
+																							returning int 
+#------------------------------------------------------------------------------------------------------
+int (*(*(*(*(*(*p)[5])(int,	void(*(*(*)(void(*)(int)))[3])(int)))(float))[4])[6])(int); 
+#---------------------------------------------------------------------------------------
+E -> E + E 
+E -> E - E 
+E -> E * E 
+E -> E / E 
+E -> E % E 
+E -> (E)
+E -> V 
+E -> Constant 
+
+((a + 10) * (b - 14)) / ((a % 10) * (b % 20))
+
+E ->	E / E 
+  -> 	(E) / (E)
+  -> 	(E * E) / (E)
+  -> 	((E) * (E)) / (E)
+  -> 	((E + E)*(E-E)) / (E)
+  -> 	((a + 10) * (b - 14)) / (E * E)
+  -> 	((a + 10) * (b - 14)) / ((E) * (E))
+  -> 	((a + 10) * (b - 14)) / ((E % E) * (E))
+  -> 	((a + 10) * (b - 14)) / ((E % E) * (E % E))
+  -> 	((a + 10) * (b - 14)) / ((a % 10) * (b % 20))
+
+  ((a + 10) * (b - 14)) / ((a % 10) * (b % 20))
+  == 
+   ((E + E) * (E - E)) / ((E % E) * (E % E))
+  == 
+  (E * E) / (E * E)
+  == 
+  (E) / (E)
+  == 
+  E / E 
+  == 
+  E 
+#--------------------------------------------------------------------------------
+(i) 	Rosen : Discrete maths : Chapter 1 to Chapter 4 
+(ii) 	Introduction to Languages & Theory of Computer Science : John Martin 
+		Chaopter 1 to 6 Chapter 6(Context Free Grammar )
+(iii)	Compilers : Principles, Tools and Techniques Chapter 1 to Chapter 5
+#--------------------------------------------------------------------------------
+The C++ Programming Language 
+Chapter 6 
+Console based Desktop Calculator 
+-----------------------------------------------------
+Exercise: 
+
+int pthread_create(void*, pthread_attr_t*, void*(*)(void*), void*); 
+
+int scandir(const DIR* dirp, struct dirent***, int(*)(const struct direct*, const struct dirent*), 
+			int(*)(const struct dirent**, const struct dirent**)); 
+
+void(*(*(*(*p)[5])[7])(int, void(*)(int)))(int); 
+
+

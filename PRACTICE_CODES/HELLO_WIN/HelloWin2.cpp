@@ -75,6 +75,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     PAINTSTRUCT ps;
     HDC hdc = NULL;
 
+    TEXTMETRIC tm;
+    static int cxChar, cyChar;
+
     switch(uMsg)
     {
         case WM_SIZE:
@@ -87,14 +90,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-
             // All painting occurs here, between BeginPaint and EndPaint.
             FillRect(hdc, &ps.rcPaint, (HBRUSH) (COLOR_WINDOW+1));
             EndPaint(hWnd, &ps);
             break;
         }
+        
+        case WM_CREATE:
+        {
+            hdc = GetDc(hWnd);
+            GetTextMetrics(hdc, &tm);
+            cxChar = tm.tmAveCharWidth;
+            cyChar = tm.tmHeight + tm.tmExternalLeading;
+            break;
+        }
             
-
         case WM_RBUTTONDOWN:
             MessageBox(hWnd, buffer, "current size", MB_OK);
             break;
@@ -106,3 +116,5 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     return(DefWindowProc(hWnd, uMsg, wParam, lParam));
 }
+
+

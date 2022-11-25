@@ -1,0 +1,21 @@
+struct tagMSG
+{
+    HWND hWnd;      // थरेड च्या ज्या विंडोव वर इवेंट आला त्या विंडोव चे हॅंडल 
+    UINT uMsg;      //  कोणता इवेंट, त्याचा नंबर 
+    WPARAM wParam;  // अनसाएण्ड लॉन्ग लॉन्ग इंट 
+    LPARAM lParam;  // लॉन्ग लॉन्ग इंट 
+    TIME t; 
+    POINT pt; 
+
+    DWORD privateInfo;
+}; 
+
+// in wParam and lParam, event specific data is stored. 
+//  i.e. the interpretation of wParam and lParam is not 
+//  generic 
+
+// The concent in wParam and lParam is understood 
+//  in the context of value in uMsg 
+//  i.e. which event has occured dictates the meaning 
+//  of wParam and lParam 
+

@@ -1,0 +1,19 @@
+insert_at_end: 
+    p_list 
+    int new_data 
+
+S1: Find last node. 
+    If the list is empty the p_list should be a last node 
+
+S2: Allocate new node 
+
+    set next field of new node next of last node 
+    set prev field of new node to last node 
+
+    if the next of last node is not NULL 
+        then prev field of next of last node should be a new node 
+    
+    next of last node should be new node 
+
+S3: return success 
+

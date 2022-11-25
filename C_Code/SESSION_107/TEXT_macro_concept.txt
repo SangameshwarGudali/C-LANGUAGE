@@ -1,0 +1,6 @@
+char* p = "Hello,World!"; 
+char msg[] = "Hello, World!"; 
+
+char c = (char)188; 
+
+printf("%c\n", c); 

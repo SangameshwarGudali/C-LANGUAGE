@@ -1,7 +1,8 @@
 #include "resource.h"
+"#include ""WinResrc.h""\r\n"
 #include "Winres.h"
-//"#include ""afxres.h""\r\n"
-//#include "afxres.h"
+"#include ""afxres.h""\r\n"
+#include "afxres.h"
 /////////////////////////////////////////////////////////////////////////////
 // Menu
 MENUDEMO MENU DISCARDABLE 

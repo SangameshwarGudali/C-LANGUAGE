@@ -1,0 +1,96 @@
+Resources: 
+(1) Running instance of executable 
+(2) Window 
+(3) Background color 
+(4) Cursor 
+(5) ICON 
+
+#--------------------------------------------
+
+-   Every window is created from a window class. 
+
+-   A Window class can be configured completely 
+by the application programmer. 
+
+-   Win 32 SDK offers a structure named WNDCLASSEX. 
+An application programmer should create an instance 
+of this structure and zero it out before filling it. 
+
+-   How to fill members of WNDCLASSEX? Before we 
+learn that we should first categorize the members 
+of WNDCLASSEX. 
+
+Category 1 -> Handles to resources. 
+
+[1] Handle to a background color 
+[2] Handle to a cursor 
+[3] Handle to an application icon 
+[4] Handle to a small icon 
+#---------------------------------------
+
+typedef struct tagWNDCLASSEX
+{
+    HBRUSH hbrBackground; 
+    HCURSOR hCursor; 
+    HICON hIcon; 
+    HICON hIconSm; 
+}WNDCLASSEX; 
+#------------------------------------------
+HGDIOBJ 
+
+Graphical -> Something which is made up of images 
+Graphical device -> a device capable of rendering 
+images (typically a monitor or a mobile screen)
+
+Graphical Device Interface : GDI : 
+Name of a system which provides data types and functions 
+capable of creating, rendering, manipulating destroying 
+images on graphical device 
+
+Under windows OS, GDI system is a sub-system of an OS. 
+(GDI is a part of OS)
+
+And gdi32.dll is a DLL file which is a bridge between an 
+application and GDI system 
+
+HGDIOBJ -> is a generic data type whose variable can store 
+HANDLE TO ANY RESOURCE implemented by GDI system
+#--------------------------------------------------------
+HCURSOR LoadCursor(HINSTANCE hInstance, LPCWSTR lpCursorName); 
+
+LoadCursor returns the handle to an icon image which serves 
+as a mouse pointer image. 
+
+It requires a handle to an instance. We pass NULL -> to indicate 
+a calling process's handle. 
+
+typedef char CHAR; 
+typedef CHAR* LPSTR; 
+#define CONST const 
+
+const char* msg = "Hello"; 
+
+typedef CONST CHAR* LPCSTR;
+LPCSTR msg = "Hello";  
+
+typedef unsigned short WCHAR; 
+typedef WCHAR* LPWSTR; 
+typedef CONST WCHAR* LPCWSTR; 
+
+[   
+    When DOS OS had segmented memory model 
+    then there were three types of pointers 
+    near pointer -> any address within the range of 
+    -128 to 127 relative  to current address was a 
+    
+    near    pointer    WITHIN SAME SEGMENT 
+    far     pointer    INTER-SEGMENT 
+
+    In flat memory model, these distinctions are 
+    inconsequential
+]
+
+char*           ->  LPSTR 
+const char*     ->  LPCSTR 
+wchar_t*        ->  LPWSTR 
+const wchar_t*  ->  LPCWSTR 

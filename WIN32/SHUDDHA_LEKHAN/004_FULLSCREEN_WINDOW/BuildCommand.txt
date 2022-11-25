@@ -1,0 +1,12 @@
+To Build
+# cl -EHsc cpaWin32_FullScreen.cpp 
+
+To run 
+# cpaWin32_FullScreen.exe
+
+After running the program 
+
+Press 'f' key to switch to fullscreen mode 
+Press 'f' again to switch back to previous window dimensions 
+
+Press escape to terminate the application 

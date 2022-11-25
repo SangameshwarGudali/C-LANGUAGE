@@ -1,0 +1,153 @@
+C-Calling convention: 
+
+Caller's responsibilities: 
+
+1)  Push the arguments on auto-storage section 
+    in right to left order as they appear in 
+    C call. 
+
+    e.g. 
+    f(100, 200, 300)
+    ---------------------1012
+    300
+    ---------------------1008
+    200
+    ---------------------1004
+    100 
+    ---------------------1000
+
+    [Reverse order ensures that the first actual 
+    parameter gets the least address and the last 
+    actual parameter gets the greatest address]
+
+2)  Make a call to callee function (calling a function involves 
+    saving the return address on the auto-storage section)
+        e.g. 
+    f(100, 200, 300)
+    ---------------------1012
+    300
+    ---------------------1008
+    200
+    ---------------------1004
+    100 
+    ---------------------1000
+    RETURN ADDRESS 
+    ---------------------996
+
+3)  returned from the caller 
+    De-allocate the parmeter storage
+
+4)  Accept the return value (optional)
+    i)  if callee returns nothing (void) then there 
+        is nothing to accept 
+    ii) even if callee function returns something 
+        it is not mandatory for caller to catch the return 
+        value. 
+        e.g. 
+        printf() always returns the number of bytes written 
+        on screen. But we almost always ignore the return value 
+        of printf() 
+
+        Ignoring return values of some functions may harm your program 
+        e.g. ignoring return address of malloc() will result into memory 
+        leak. 
+
+ 
+------------------------------------------------------------------------------
+Callee's responsibility: 
+
+1)  Save the frame pointer of caller function and set the frame pointer 
+    of callee function! 
+
+2)  Allocate space for local variables 
+
+3)  Execute callee's logic 
+
+4)  Return value if any, should be saved in processor's register 
+    (in case of intel, the register name is accumulator register
+    eax (32 bit), rax(64 bit))
+
+5)  De-allocate local variables 
+
+6)  Restore the frame pointer of caller function. 
+
+7)  Return the control flow to the caller 
+#---------------------------------------------------------------------------------
+
+PASCAL / Standard Calling convention 
+Caller's responsibilities: 
+
+1)  Push the arguments on auto-storage section 
+    in right to left order as they appear in 
+    C call. 
+
+    e.g. 
+    f(100, 200, 300)
+    ---------------------1012
+    300
+    ---------------------1008
+    200
+    ---------------------1004
+    100 
+    ---------------------1000
+
+    [Reverse order ensures that the first actual 
+    parameter gets the least address and the last 
+    actual parameter gets the greatest address]
+
+2)  Make a call to callee function (calling a function involves 
+    saving the return address on the auto-storage section)
+        e.g. 
+    f(100, 200, 300)
+    ---------------------1012
+    300
+    ---------------------1008
+    200
+    ---------------------1004
+    100 
+    ---------------------1000
+    RETURN ADDRESS 
+    ---------------------996
+
+3)  returned from the caller 
+
+4)  Accept the return value (optional)
+    i)  if callee returns nothing (void) then there 
+        is nothing to accept 
+    ii) even if callee function returns something 
+        it is not mandatory for caller to catch the return 
+        value. 
+        e.g. 
+        printf() always returns the number of bytes written 
+        on screen. But we almost always ignore the return value 
+        of printf() 
+
+        Ignoring return values of some functions may harm your program 
+        e.g. ignoring return address of malloc() will result into memory 
+        leak. 
+
+ 
+------------------------------------------------------------------------------
+Callee's responsibility: 
+
+1)  Save the frame pointer of caller function and set the frame pointer 
+    of callee function! 
+
+2)  Allocate space for local variables 
+
+3)  Execute callee's logic 
+
+4)  Return value if any, should be saved in processor's register 
+    (in case of intel, the register name is accumulator register
+    eax (32 bit), rax(64 bit))
+
+5)  De-allocate local variables 
+
+6)  Restore the frame pointer of caller function. 
+
+7)  Clear the storage allocated to parameters and return 
+    control flow to the caller. 
+#-------------------------------------------------------------------------------
+
+
+

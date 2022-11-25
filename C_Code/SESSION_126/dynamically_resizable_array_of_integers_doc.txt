@@ -1,0 +1,60 @@
+struct vector_of_integers
+{
+    int* p_arr;                         /* pointer to save address of the first element in array */ 
+    long long int number_of_elements;   /* Store the current number of elements in array */ 
+}; 
+/* Programming Inference: 
+    at any given moment, 
+    p_arr[0] to p_arr[number_of_elements-1] is a valid index range 
+*/ 
+
+
+struct vector_of_integers* create_vector_of_integers(void)
+{
+    /*  
+        This function should create an instance of struct vector_of_integers
+        using malloc() function and initialize p_arr member to NULL and 
+        number_of_elements to 0. 
+
+        In effect, this function creates an EMPTY vector of integers and 
+        returns address of structure containing its base addr and size members 
+    */ 
+}
+
+int append_element_to_vector(struct vector_of_integers* p_vector, int element)
+{
+    /* 
+        Role of function: This function allows adding an element to the vector at 
+        last position. 
+
+        @param1: p_vector: struct vector_of_integers*: Which vector? (which vector 
+        should be used to carry out append operation)
+
+        @param2: element: int: Which element? (whch element should be added to the vector?)
+
+        @return: int: Return status: 1 for success! 
+    */ 
+} 
+ 
+void show_vector(sturct vector_of_integers* p_vector, const char* msg)
+{
+    /*  
+        This function displays the message in 'msg' (if msg != NULL)
+        and further index-wise displays all elements in array 
+    
+        @param1: p_vector: struct vector_of_integers*: Which vector? 
+        @param2: msg: const char*: A message
+        @return: void: None
+    */ 
+}
+
+void destroy_vector(struct vector_of_integers* p_vector)
+{
+    /* 
+        Destroy the internal array of integers and the struture containing 
+        base address and size of array 
+
+        @param1: struct vector_of_integers*: Which vector? 
+        @return: void: None 
+    */ 
+}
